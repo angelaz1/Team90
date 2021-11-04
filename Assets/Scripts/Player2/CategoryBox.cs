@@ -36,7 +36,7 @@ public class CategoryBox : MonoBehaviour
             gameManager.AddIncorrect();
         }
 
-        Invoke(nameof(SwitchBackToDefaultMat), 0.5f);
+        Invoke(nameof(SwitchBackToDefaultMat), 0.2f);
         Destroy(paper);
     }
 
