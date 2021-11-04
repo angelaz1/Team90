@@ -14,6 +14,7 @@ public class PapersController : MonoBehaviour
     List<GameObject> papers = new List<GameObject>(); // Current paper is the one in index 0
     string subjectsFilePath = "Subjects";
     Subject[] subjects;
+    bool onCooldown = false;
 
     void Start()
     {
@@ -44,19 +45,28 @@ public class PapersController : MonoBehaviour
 
     private void Update()
     {
-        if (papers.Count > 0)
+        if (papers.Count > 0 && !onCooldown)
         { 
             if (Input.GetKeyDown(KeyCode.J))
             {
                 animalBox.ReceivePaper(papers[0]);
                 StartCoroutine(ShufflePagePositions());
+                onCooldown = true;
+                Invoke(nameof(StopCooldown), 0.1f);
             }
             else if (Input.GetKeyDown(KeyCode.K))
             {
                 humanBox.ReceivePaper(papers[0]);
                 StartCoroutine(ShufflePagePositions());
+                onCooldown = true;
+                Invoke(nameof(StopCooldown), 0.1f);
             }
         }
+    }
+
+    void StopCooldown()
+    {
+        onCooldown = false;
     }
 
     IEnumerator ShufflePagePositions()
