@@ -21,7 +21,7 @@ public class PapersController : MonoBehaviour
         TextAsset subjectsTextAsset = Resources.Load<TextAsset>(subjectsFilePath);
         subjects = JsonUtility.FromJson<Subjects>(subjectsTextAsset.text).subjects;
 
-        StartCoroutine(SpawnPapers()); // DEBUG to spawn papers in for testing
+        //StartCoroutine(SpawnPapers()); // DEBUG to spawn papers in for testing
     }
 
     IEnumerator SpawnPapers()
