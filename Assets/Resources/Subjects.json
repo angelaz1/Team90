@@ -1,0 +1,29 @@
+{
+    "subjects": 
+    [
+        {
+            "subjectName": "Cat",
+            "subjectTypeStr": "Animal"
+        },
+        {
+            "subjectName": "Dog",
+            "subjectTypeStr": "Animal"
+        },
+        {
+            "subjectName": "Horse",
+            "subjectTypeStr": "Animal"
+        },
+        {
+            "subjectName": "John",
+            "subjectTypeStr": "Human"
+        },
+        {
+            "subjectName": "Steve",
+            "subjectTypeStr": "Human"
+        },
+        {
+            "subjectName": "Amy",
+            "subjectTypeStr": "Human"
+        }
+    ]
+}
