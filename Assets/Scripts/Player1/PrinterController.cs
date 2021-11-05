@@ -19,10 +19,15 @@ public class PrinterController : MonoBehaviour
     bool paperSpawned = false;
     bool printerBroken = false;
 
+    int minSteps = 3;
+    int maxSteps = 7;
+    int currMaxSteps;
+
     void Start()
     {
         passPaperActions.Add(Direction.Up);
         passPaperActions.Add(Direction.Right);
+        currMaxSteps = minSteps + 1;
 
         StartCoroutine(SpawnPapers());
     }
@@ -32,8 +37,17 @@ public class PrinterController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(spawnTimeMin, spawnTimeMax));
-            SpawnPaper();
-            while (paperSpawned)
+            int rng = Random.Range(0, 10);
+            if (rng > 8)
+            {
+                BreakPrinter();
+            }
+            else
+            {
+                SpawnPaper();
+            }
+
+            while (paperSpawned || printerBroken)
             { 
                 yield return null;
             }
@@ -51,10 +65,26 @@ public class PrinterController : MonoBehaviour
         actionsController.DisplayActions(currentActions);
     }
 
+    void BreakPrinter()
+    {
+        printerBroken = true;
+
+        int numActions = Random.Range(minSteps, currMaxSteps);
+        for (int i = 0; i < numActions; i++)
+        {
+            Direction randDir = (Direction)Random.Range(0, 4);
+            currentActions.Add(randDir);
+        }
+        currMaxSteps = Mathf.Min(currMaxSteps + 1, maxSteps);
+
+        // Display actions
+        actionsController.DisplayActions(currentActions);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (paperSpawned)
+        if (paperSpawned || printerBroken)
         {
             if (Input.GetKeyDown(KeyCode.W)) HandleAction(Direction.Up);
             else if (Input.GetKeyDown(KeyCode.A)) HandleAction(Direction.Left);
@@ -80,7 +110,7 @@ public class PrinterController : MonoBehaviour
             if (printerBroken)
             {
                 // Fix printer
-                printerBroken = false;
+                Invoke(nameof(FixPrinter), 0.2f);
             }
             else
             {
@@ -97,6 +127,14 @@ public class PrinterController : MonoBehaviour
 
         // Pass paper to player 2
         papersController.SpawnPaper();
+
+        // Update actions display
+        actionsController.HideActions();
+    }
+
+    void FixPrinter()
+    {
+        printerBroken = false;
 
         // Update actions display
         actionsController.HideActions();

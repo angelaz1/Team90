@@ -51,15 +51,11 @@ public class PapersController : MonoBehaviour
             {
                 animalBox.ReceivePaper(papers[0]);
                 StartCoroutine(ShufflePagePositions());
-                onCooldown = true;
-                Invoke(nameof(StopCooldown), 0.1f);
             }
             else if (Input.GetKeyDown(KeyCode.K))
             {
                 humanBox.ReceivePaper(papers[0]);
                 StartCoroutine(ShufflePagePositions());
-                onCooldown = true;
-                Invoke(nameof(StopCooldown), 0.1f);
             }
         }
     }
@@ -72,6 +68,8 @@ public class PapersController : MonoBehaviour
     IEnumerator ShufflePagePositions()
     {
         papers.RemoveAt(0);
+        onCooldown = true;
+        Invoke(nameof(StopCooldown), 0.1f);
         if (papers.Count > 0) papers[0].GetComponent<Paper>().MoveToPosition(currentPaperPosition.transform.position);
         if (papers.Count > 1)
         {
