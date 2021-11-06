@@ -30,6 +30,16 @@ public class BoxController : MonoBehaviour
         }
     }
 
+    public void InitializePosition(int row, int col)
+    {
+        boxRow = row;
+        boxCol = col;
+
+        Vector3 gridPos = gridController.GetPosition(boxRow, boxCol);
+        gridPos.y = transform.position.y;
+        transform.position = gridPos;
+    }
+
     public void SetPosition(int row, int col)
     {
         boxRow = row;

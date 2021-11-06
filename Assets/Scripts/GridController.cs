@@ -60,8 +60,7 @@ public class GridController : MonoBehaviour
 
     void InitialSpawnDestination()
     {
-        do
-        {
+        do {
             destRow = Random.Range(1, width);
             destCol = Random.Range(1, height);
         } while (GetPositionValue(destRow, destCol) != GridValue.Space);
@@ -71,8 +70,7 @@ public class GridController : MonoBehaviour
 
     void SpawnBox()
     {
-        do
-        {
+        do {
             boxRow = Random.Range(0, width);
             boxCol = Random.Range(0, height);
         } while (GetPositionValue(boxRow, boxCol) != GridValue.Space);
@@ -82,8 +80,7 @@ public class GridController : MonoBehaviour
 
     void SpawnDestination()
     {
-        do
-        {
+        do {
             destRow = Random.Range(0, width);
             destCol = Random.Range(0, height);
         } while (GetPositionValue(destRow, destCol) != GridValue.Space);
@@ -95,7 +92,7 @@ public class GridController : MonoBehaviour
     {
         GameObject boxObject = Instantiate(boxPrefab, transform);
         box = boxObject.GetComponent<BoxController>();
-        box.SetPosition(boxRow, boxCol);
+        box.InitializePosition(boxRow, boxCol);
         SetPositionValue(boxRow, boxCol, GridValue.Box);
     }
 
