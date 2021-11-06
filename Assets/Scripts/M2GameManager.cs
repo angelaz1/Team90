@@ -4,16 +4,14 @@ using UnityEngine;
 using TMPro;
 using System;
 
-public class GameManager : MonoBehaviour
+public class M2GameManager : MonoBehaviour
 {
     public TextMeshProUGUI totalText;
-    public TextMeshProUGUI accuracyText;
     public TextMeshProUGUI timerText;
     public GameObject winScreen;
 
     public int gameTime = 60;
 
-    float numCorrect = 0;
     float numTotal = 0;
 
     private void Start()
@@ -47,14 +45,7 @@ public class GameManager : MonoBehaviour
         timerText.text = $"Time: {minutes}:{seconds}";
     }
 
-    public void AddCorrect()
-    {
-        numCorrect++;
-        numTotal++;
-        UpdateText();
-    }
-
-    public void AddIncorrect()
+    public void AddTotal()
     {
         numTotal++;
         UpdateText();
@@ -62,8 +53,6 @@ public class GameManager : MonoBehaviour
 
     void UpdateText()
     {
-        totalText.text = $"# Papers Classified: {numTotal}";
-        string accuracyStr = numTotal == 0 ? "0.00" : string.Format("{0:0.00}", numCorrect / numTotal * 100f);
-        accuracyText.text = $"Accuracy: {accuracyStr}%";
+        totalText.text = $"# Boxes Delivered: {numTotal}";
     }
 }

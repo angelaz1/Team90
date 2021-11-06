@@ -12,12 +12,12 @@ public class CategoryBox : MonoBehaviour
 
     Material baseMaterial;
 
-    GameManager gameManager;
+    M1GameManager gameManager;
 
     void Start()
     {
         baseMaterial = GetComponent<MeshRenderer>().material;
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<M1GameManager>();
     }
 
 
