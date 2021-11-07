@@ -47,12 +47,12 @@ public class PapersController : MonoBehaviour
     {
         if (papers.Count > 0 && !onCooldown)
         { 
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 animalBox.ReceivePaper(papers[0]);
                 StartCoroutine(ShufflePagePositions());
             }
-            else if (Input.GetKeyDown(KeyCode.K))
+            else if (Input.GetKeyDown(KeyCode.G))
             {
                 humanBox.ReceivePaper(papers[0]);
                 StartCoroutine(ShufflePagePositions());

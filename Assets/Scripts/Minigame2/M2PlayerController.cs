@@ -10,6 +10,8 @@ public class M2PlayerController : MonoBehaviour
     int playerCol = 0;
     Direction playerDirection;
 
+    bool keyDown;
+
     void Start()
     {
         gridController = GameObject.Find("GridController").GetComponent<GridController>();
@@ -18,32 +20,63 @@ public class M2PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (!keyDown)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            playerDirection = Direction.Up;
-            TryMove(playerRow + 1, playerCol);
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            playerDirection = Direction.Down;
-            TryMove(playerRow - 1, playerCol);
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            transform.rotation = Quaternion.Euler(0, -90, 0);
-            playerDirection = Direction.Left;
-            TryMove(playerRow, playerCol - 1);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            transform.rotation = Quaternion.Euler(0, 90, 0);
-            playerDirection = Direction.Right;
-            TryMove(playerRow, playerCol + 1);
+            if (Input.GetAxis("Vertical") > 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                playerDirection = Direction.Up;
+                TryMove(playerRow + 1, playerCol);
+            }
+            else if (Input.GetAxis("Vertical") < 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                playerDirection = Direction.Down;
+                TryMove(playerRow - 1, playerCol);
+            }
+            else if (Input.GetAxis("Horizontal") < 0)
+            {
+                transform.rotation = Quaternion.Euler(0, -90, 0);
+                playerDirection = Direction.Left;
+                TryMove(playerRow, playerCol - 1);
+            }
+            else if (Input.GetAxis("Horizontal") > 0)
+            {
+                transform.rotation = Quaternion.Euler(0, 90, 0);
+                playerDirection = Direction.Right;
+                TryMove(playerRow, playerCol + 1);
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0) keyDown = false;
+
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    transform.rotation = Quaternion.Euler(0, 0, 0);
+        //    playerDirection = Direction.Up;
+        //    TryMove(playerRow + 1, playerCol);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.S))
+        //{
+        //    transform.rotation = Quaternion.Euler(0, 180, 0);
+        //    playerDirection = Direction.Down;
+        //    TryMove(playerRow - 1, playerCol);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.A))
+        //{
+        //    transform.rotation = Quaternion.Euler(0, -90, 0);
+        //    playerDirection = Direction.Left;
+        //    TryMove(playerRow, playerCol - 1);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.D))
+        //{
+        //    transform.rotation = Quaternion.Euler(0, 90, 0);
+        //    playerDirection = Direction.Right;
+        //    TryMove(playerRow, playerCol + 1);
+        //}
+
+
+        if (Input.GetKeyDown(KeyCode.F))
         {
             // Check for box
             if (gridController.HasBoxInView(playerRow, playerCol, playerDirection))
@@ -53,7 +86,7 @@ public class M2PlayerController : MonoBehaviour
                 gridController.PullBox(playerDirection);
             }
         }
-        else if (Input.GetKeyDown(KeyCode.K))
+        else if (Input.GetKeyDown(KeyCode.G))
         {
             // Check for box
             if (gridController.HasBoxInView(playerRow, playerCol, playerDirection))
@@ -67,6 +100,7 @@ public class M2PlayerController : MonoBehaviour
 
     void TryMove(int newRow, int newCol)
     {
+        keyDown = true;
         if (!gridController.IsValidPosition(newRow, newCol)) return;
         if (gridController.GetPositionValue(newRow, newCol) != GridValue.Space) return;
 

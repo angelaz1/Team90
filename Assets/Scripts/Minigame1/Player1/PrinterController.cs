@@ -18,6 +18,7 @@ public class PrinterController : MonoBehaviour
 
     bool paperSpawned = false;
     bool printerBroken = false;
+    bool keyDown = false;
 
     int minSteps = 3;
     int maxSteps = 7;
@@ -59,7 +60,10 @@ public class PrinterController : MonoBehaviour
         paperObject.SetActive(true);
         paperSpawned = true;
 
-        currentActions.AddRange(passPaperActions);
+        //currentActions.AddRange(passPaperActions);
+        Direction randDir = (Direction)Random.Range(0, 4);
+        currentActions.Add(randDir);
+        currentActions.Add(Direction.Right);
 
         // Display actions
         actionsController.DisplayActions(currentActions);
@@ -86,15 +90,26 @@ public class PrinterController : MonoBehaviour
     {
         if (paperSpawned || printerBroken)
         {
-            if (Input.GetKeyDown(KeyCode.W)) HandleAction(Direction.Up);
-            else if (Input.GetKeyDown(KeyCode.A)) HandleAction(Direction.Left);
-            else if (Input.GetKeyDown(KeyCode.S)) HandleAction(Direction.Down);
-            else if (Input.GetKeyDown(KeyCode.D)) HandleAction(Direction.Right);
+            if (!keyDown)
+            {
+                if (Input.GetAxis("Vertical") > 0) HandleAction(Direction.Up);
+                else if (Input.GetAxis("Horizontal") < 0) HandleAction(Direction.Left);
+                else if (Input.GetAxis("Vertical") < 0) HandleAction(Direction.Down);
+                else if (Input.GetAxis("Horizontal") > 0) HandleAction(Direction.Right);
+            }
+            if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0) keyDown = false;
+
+            //if (Input.GetKeyDown(KeyCode.W)) HandleAction(Direction.Up);
+            //else if (Input.GetKeyDown(KeyCode.A)) HandleAction(Direction.Left);
+            //else if (Input.GetKeyDown(KeyCode.S)) HandleAction(Direction.Down);
+            //else if (Input.GetKeyDown(KeyCode.D)) HandleAction(Direction.Right);
         }
     }
 
     void HandleAction(Direction dir)
     {
+        keyDown = true;
+
         if (currentActions[0] == dir)
         {
             currentActions.RemoveAt(0);
