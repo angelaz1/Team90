@@ -50,6 +50,6 @@ public class SelectionManager : MonoBehaviour
     public void FinishMinigame(int index, int score)
     {
         finishedMinigames[index] = true;
-        minigameScores[index] = score;
+        minigameScores[index] = Mathf.Max(minigameScores[index], score);
     }
 }

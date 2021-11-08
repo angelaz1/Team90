@@ -7,6 +7,11 @@
             "subjectTypeStr": "Animal"
         },
         {
+            "subjectName": "Bunny",
+            "subjectPictureFilePath": "Pictures/Bear",
+            "subjectTypeStr": "Animal"
+        },
+        {
             "subjectName": "Amy",
             "subjectPictureFilePath": "Pictures/Girl1",
             "subjectTypeStr": "Human"
