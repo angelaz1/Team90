@@ -14,6 +14,8 @@ public class M2PlayerController : MonoBehaviour
 
     bool gameStarted = false;
 
+    public LineRenderer grabLine;
+
     [Header("SFX")]
     public AudioClip walkClip;
     AudioSource audioSource;
@@ -22,6 +24,7 @@ public class M2PlayerController : MonoBehaviour
     {
         gridController = GameObject.Find("GridController").GetComponent<GridController>();
         gridController.SetPositionValue(playerRow, playerCol, GridValue.Player);
+        grabLine.gameObject.SetActive(false);
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -99,6 +102,8 @@ public class M2PlayerController : MonoBehaviour
                 Debug.Log("Pull Box");
                 gridController.PullBox(playerDirection);
             }
+
+            StartCoroutine(RenderGrabLine());
         }
         else if (Input.GetKeyDown(KeyCode.G))
         {
@@ -109,7 +114,31 @@ public class M2PlayerController : MonoBehaviour
                 Debug.Log("Push Box");
                 gridController.PushBox(playerDirection);
             }
+
+            StartCoroutine(RenderGrabLine());
         }
+    }
+
+    IEnumerator RenderGrabLine()
+    {
+        float currentTime = 0;
+        float maxTime = 0.2f;
+        LayerMask mask = LayerMask.GetMask("LaserHit");
+        grabLine.gameObject.SetActive(true);
+        grabLine.SetPosition(0, Vector3.zero);
+
+        while (currentTime < maxTime)
+        { 
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, mask))
+            {
+                grabLine.SetPosition(1, Vector3.forward * hit.distance);
+            }
+            currentTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        grabLine.gameObject.SetActive(false);
     }
 
     void TryMove(int newRow, int newCol)
