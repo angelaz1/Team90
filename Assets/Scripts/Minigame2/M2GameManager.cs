@@ -4,45 +4,18 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class M2GameManager : MonoBehaviour
+public class M2GameManager : GameManager
 {
+    [Header("Minigame 2 Variables")]
     public TextMeshProUGUI totalText;
-    public TextMeshProUGUI timerText;
-    public GameObject winScreen;
 
-    public int gameTime = 60;
+    public M2PlayerController playerController;
 
     float numTotal = 0;
 
-    private void Start()
+    public override void StartOtherGameObjects()
     {
-        winScreen.SetActive(false);
-        StartCoroutine(StartTimer());
-    }
-
-    IEnumerator StartTimer()
-    {
-        while (gameTime > 0)
-        { 
-            UpdateTimerText();
-            yield return new WaitForSeconds(1f);
-            gameTime--;
-        }
-        UpdateTimerText();
-        EndGame();
-    }
-
-    void EndGame()
-    {
-        Time.timeScale = 0;
-        winScreen.SetActive(true);
-    }
-
-    void UpdateTimerText()
-    {
-        string minutes = string.Format("{0:00}", gameTime / 60);
-        string seconds = string.Format("{0:00}", gameTime % 60);
-        timerText.text = $"Time: {minutes}:{seconds}";
+        //playerController.AllowMovement();
     }
 
     public void AddTotal()
@@ -56,7 +29,7 @@ public class M2GameManager : MonoBehaviour
         totalText.text = $"# Boxes Delivered: {numTotal}";
     }
 
-    public void ExitToMain()
+    public override void ExitToMain()
     {
         GameObject sManagerObj = GameObject.Find("SelectionManager");
         if (sManagerObj)
