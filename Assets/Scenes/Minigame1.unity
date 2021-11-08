@@ -1915,6 +1915,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 790742548600803979, guid: 8c836d874988f6d45ac112a48011e9d3, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b279e68305f974e4484f6e2e684bcd31, type: 2}
+    - target: {fileID: 790742548600803979, guid: 8c836d874988f6d45ac112a48011e9d3, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: f25e8722f545f25498d2358ace706754, type: 2}
     - target: {fileID: 4063001518295489984, guid: 8c836d874988f6d45ac112a48011e9d3, type: 3}
       propertyPath: m_Name
       value: Player 1 Area
