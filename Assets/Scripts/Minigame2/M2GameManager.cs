@@ -58,6 +58,12 @@ public class M2GameManager : MonoBehaviour
 
     public void ExitToMain()
     {
-        SceneManager.LoadScene("Start"); // TODO: Change to main menu
+        GameObject sManagerObj = GameObject.Find("SelectionManager");
+        if (sManagerObj)
+        {
+            sManagerObj.GetComponent<SelectionManager>().FinishMinigame(1, 5);
+        }
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Selection");
     }
 }
