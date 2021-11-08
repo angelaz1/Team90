@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
-using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class M1GameManager : MonoBehaviour
 {
@@ -65,5 +65,10 @@ public class M1GameManager : MonoBehaviour
         totalText.text = $"# Papers Classified: {numTotal}";
         string accuracyStr = numTotal == 0 ? "0.00" : string.Format("{0:0.00}", numCorrect / numTotal * 100f);
         accuracyText.text = $"Accuracy: {accuracyStr}%";
+    }
+
+    public void ExitToMain()
+    {
+        SceneManager.LoadScene("Start"); // TODO: Change to main menu
     }
 }
