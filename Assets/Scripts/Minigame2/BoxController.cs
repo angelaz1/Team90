@@ -25,8 +25,8 @@ public class BoxController : MonoBehaviour
         if (isMoving)
         {
             transform.position = Vector3.Lerp(currentPos, targetPos, currentTime);
-            currentTime += Time.deltaTime * moveSpeed;
             if (currentTime >= 1) isMoving = false;
+            currentTime += Time.deltaTime * moveSpeed;
         }
     }
 

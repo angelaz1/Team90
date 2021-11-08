@@ -14,10 +14,16 @@ public class M2PlayerController : MonoBehaviour
 
     bool gameStarted = false;
 
+    [Header("SFX")]
+    public AudioClip walkClip;
+    AudioSource audioSource;
+
     void Start()
     {
         gridController = GameObject.Find("GridController").GetComponent<GridController>();
         gridController.SetPositionValue(playerRow, playerCol, GridValue.Player);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void AllowMovement()
@@ -109,6 +115,9 @@ public class M2PlayerController : MonoBehaviour
     void TryMove(int newRow, int newCol)
     {
         keyDown = true;
+        audioSource.clip = walkClip;
+        audioSource.Play();
+
         if (!gridController.IsValidPosition(newRow, newCol)) return;
         if (gridController.GetPositionValue(newRow, newCol) != GridValue.Space) return;
 
@@ -121,5 +130,6 @@ public class M2PlayerController : MonoBehaviour
 
         playerRow = newRow;
         playerCol = newCol;
+
     }
 }
