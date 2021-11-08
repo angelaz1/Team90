@@ -628,7 +628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 548810700}
   winScreen: {fileID: 389002281}
-  gameTime: 90
+  gameTime: 75
   tutorialPanel: {fileID: 1190628317}
   countdownPanel: {fileID: 251151949}
   countdownText: {fileID: 251151948}
@@ -3983,7 +3983,7 @@ PrefabInstance:
     - target: {fileID: 222393939347015829, guid: 8c836d874988f6d45ac112a48011e9d3, type: 3}
       propertyPath: papersController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5388732176097376806}
     - target: {fileID: 222393939347015829, guid: 8c836d874988f6d45ac112a48011e9d3, type: 3}
       propertyPath: actionsController
       value: 
