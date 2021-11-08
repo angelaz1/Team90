@@ -7,8 +7,28 @@
             "subjectTypeStr": "Animal"
         },
         {
+            "subjectName": "Bunny",
+            "subjectPictureFilePath": "Pictures/Bear",
+            "subjectTypeStr": "Animal"
+        },
+        {
             "subjectName": "Amy",
             "subjectPictureFilePath": "Pictures/Girl1",
+            "subjectTypeStr": "Human"
+        },
+        {
+            "subjectName": "Steve",
+            "subjectPictureFilePath": "Pictures/Boy1",
+            "subjectTypeStr": "Human"
+        },
+        {
+            "subjectName": "Bobby",
+            "subjectPictureFilePath": "Pictures/Boy2",
+            "subjectTypeStr": "Human"
+        },
+        {
+            "subjectName": "Jessica",
+            "subjectPictureFilePath": "Pictures/Girl2",
             "subjectTypeStr": "Human"
         }
     ]

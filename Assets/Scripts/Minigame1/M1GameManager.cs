@@ -11,9 +11,10 @@ public class M1GameManager : GameManager
     public TextMeshProUGUI accuracyText;
 
     public PrinterController printerController;
+    public PapersController papersController;
 
-    float numCorrect = 0;
-    float numTotal = 0;
+    //float numCorrect = 0;
+    //int numTotal = 0;
 
     public override void StartOtherGameObjects()
     {
@@ -22,22 +23,27 @@ public class M1GameManager : GameManager
 
     public void AddCorrect()
     {
-        numCorrect++;
-        numTotal++;
+        //numCorrect++;
+        currentScore++;
         UpdateText();
     }
 
     public void AddIncorrect()
     {
-        numTotal++;
+        //numTotal++;
         UpdateText();
     }
 
     void UpdateText()
     {
-        totalText.text = $"# Papers Classified: {numTotal}";
-        string accuracyStr = numTotal == 0 ? "0.00" : string.Format("{0:0.00}", numCorrect / numTotal * 100f);
-        accuracyText.text = $"Accuracy: {accuracyStr}%";
+        totalText.text = $"# Papers Sorted: {currentScore}";
+        //string accuracyStr = numTotal == 0 ? "0.00" : string.Format("{0:0.00}", numCorrect / numTotal * 100f);
+        //accuracyText.text = $"Accuracy: {accuracyStr}%";
+    }
+
+    public override void DoOnWin()
+    {
+        papersController.WinGame();
     }
 
     public override void ExitToMain()
@@ -45,7 +51,7 @@ public class M1GameManager : GameManager
         GameObject sManagerObj = GameObject.Find("SelectionManager");
         if (sManagerObj)
         {
-            sManagerObj.GetComponent<SelectionManager>().FinishMinigame(0, 5);
+            sManagerObj.GetComponent<SelectionManager>().FinishMinigame(0, ComputeScore());
         }
         Time.timeScale = 1;
         SceneManager.LoadScene("Selection");

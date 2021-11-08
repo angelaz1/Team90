@@ -22,7 +22,6 @@ public class SelectionUIManager : MonoBehaviour
             minigameButtons[i].interactable = i < numMinigames;
         }
 
-        //TODO: Show scores
         for (int i = 0; i < scorings.Length; i++)
         {
             scorings[i].SetScore(selectionManager.GetScore(i));

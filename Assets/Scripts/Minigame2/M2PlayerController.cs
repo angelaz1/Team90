@@ -84,7 +84,6 @@ public class M2PlayerController : MonoBehaviour
         //    TryMove(playerRow, playerCol + 1);
         //}
 
-
         if (Input.GetKeyDown(KeyCode.F))
         {
             // Check for box

@@ -21,6 +21,7 @@ public class GridController : MonoBehaviour
 
     int destRow; 
     int destCol;
+    bool reachedDestination = false;
 
     M2GameManager gameManager;
 
@@ -147,6 +148,7 @@ public class GridController : MonoBehaviour
 
     public bool HasBoxInView(int pRow, int pCol, Direction dir)
     {
+        if (reachedDestination) return false;
         int xOff = GetXOffset(dir);
         int yOff = GetYOffset(dir);
 
@@ -174,6 +176,7 @@ public class GridController : MonoBehaviour
 
             if (GetPositionValue(currRow, currCol) == GridValue.Destination)
             {
+                reachedDestination = true;
                 Invoke(nameof(ReachedDestination), 1f);
                 break;
             }
@@ -208,6 +211,7 @@ public class GridController : MonoBehaviour
 
             if (GetPositionValue(currRow, currCol) == GridValue.Destination)
             {
+                reachedDestination = true;
                 Invoke(nameof(ReachedDestination), 1f);
                 break;
             }
@@ -223,6 +227,7 @@ public class GridController : MonoBehaviour
     void ReachedDestination()
     {
         gameManager.AddTotal();
+        reachedDestination = false;
         Destroy(box.gameObject);
 
         SetPositionValue(boxRow, boxCol, GridValue.Space);

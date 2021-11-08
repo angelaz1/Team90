@@ -29,12 +29,17 @@ public class M2GameManager : GameManager
         totalText.text = $"# Boxes Delivered: {numTotal}";
     }
 
+    public override void DoOnWin()
+    {
+        return;
+    }
+
     public override void ExitToMain()
     {
         GameObject sManagerObj = GameObject.Find("SelectionManager");
         if (sManagerObj)
         {
-            sManagerObj.GetComponent<SelectionManager>().FinishMinigame(1, 5);
+            sManagerObj.GetComponent<SelectionManager>().FinishMinigame(1, ComputeScore());
         }
         Time.timeScale = 1;
         SceneManager.LoadScene("Selection");

@@ -8,6 +8,8 @@ public class PapersController : MonoBehaviour
     public CategoryBox animalBox;
     public CategoryBox humanBox;
 
+    public GameObject pikachu;
+
     public GameObject currentPaperPosition;
     public GameObject otherPaperPosition;
 
@@ -24,14 +26,14 @@ public class PapersController : MonoBehaviour
         //StartCoroutine(SpawnPapers()); // DEBUG to spawn papers in for testing
     }
 
-    IEnumerator SpawnPapers()
-    {
-        while (true) 
-        {
-            SpawnPaper();
-            yield return new WaitForSeconds(1f);
-        }
-    }
+    //IEnumerator SpawnPapers()
+    //{
+    //    while (true) 
+    //    {
+    //        SpawnPaper();
+    //        yield return new WaitForSeconds(1f);
+    //    }
+    //}
 
     public void SpawnPaper()
     {
@@ -47,15 +49,23 @@ public class PapersController : MonoBehaviour
     private void Update()
     {
         if (papers.Count > 0 && !onCooldown)
-        { 
+        {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                animalBox.ReceivePaper(papers[0]);
+                bool success = animalBox.ReceivePaper(papers[0]);
+                if (success)
+                {
+                    pikachu.GetComponent<Animator>().SetTrigger("CorrectCategory");
+                }
                 StartCoroutine(ShufflePagePositions());
             }
             else if (Input.GetKeyDown(KeyCode.G))
             {
-                humanBox.ReceivePaper(papers[0]);
+                bool success = humanBox.ReceivePaper(papers[0]);
+                if (success)
+                {
+                    pikachu.GetComponent<Animator>().SetTrigger("CorrectCategory");
+                }
                 StartCoroutine(ShufflePagePositions());
             }
         }
@@ -77,5 +87,10 @@ public class PapersController : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             papers[1].SetActive(true);
         } 
+    }
+
+    public void WinGame()
+    {
+        pikachu.GetComponent<Animator>().SetTrigger("Win");
     }
 }
