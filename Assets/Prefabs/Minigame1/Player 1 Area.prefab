@@ -175,6 +175,9 @@ MonoBehaviour:
   spawnTimeMax: 2
   actionsController: {fileID: 0}
   papersController: {fileID: 0}
+  paperComeOutClip: {fileID: 0}
+  printerBrokenClip: {fileID: 0}
+  printerWorkingClip: {fileID: 0}
 --- !u!1 &222393939517932755
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,12 +13,51 @@ public class M1GameManager : MonoBehaviour
 
     public int gameTime = 60;
 
+    public PrinterController printerController;
+    public GameObject countdownPanel;
+    public TextMeshProUGUI countdownText;
+
     float numCorrect = 0;
     float numTotal = 0;
 
+    [Header("SFX")]
+    AudioSource audioSource;
+    public AudioClip refereeClip;
+    public AudioClip winClip;
+    public AudioClip loseClip;
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         winScreen.SetActive(false);
+        UpdateTimerText();
+        StartCoroutine(StartCountdown());
+    }
+
+    IEnumerator StartCountdown()
+    {
+        // Show a tutorial
+
+        // Start countdown
+        countdownPanel.SetActive(true);
+        countdownText.text = "3";
+        yield return new WaitForSeconds(1f);
+
+        countdownText.text = "2";
+        yield return new WaitForSeconds(1f);
+
+        countdownText.text = "1";
+        yield return new WaitForSeconds(1f);
+
+        countdownText.text = "START!!";
+        audioSource.clip = refereeClip;
+        audioSource.Play();
+        yield return new WaitForSeconds(1f);
+
+        countdownText.text = "";
+        countdownPanel.SetActive(false);
+
+        printerController.StartSpawningPapers();
         StartCoroutine(StartTimer());
     }
 
@@ -38,6 +77,10 @@ public class M1GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         winScreen.SetActive(true);
+
+        // TODO: play clip based on score
+        audioSource.clip = winClip;
+        audioSource.Play();
     }
 
     void UpdateTimerText()

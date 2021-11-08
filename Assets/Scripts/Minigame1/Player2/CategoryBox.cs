@@ -10,14 +10,20 @@ public class CategoryBox : MonoBehaviour
     public GameObject correctParticles;
     public GameObject incorrectParticles;
 
+    [Header("SFX")]
+    public AudioClip correctClip;
+    public AudioClip incorrectClip;
+
     Material baseMaterial;
 
     M1GameManager gameManager;
+    AudioSource audioSource;
 
     void Start()
     {
         baseMaterial = GetComponent<MeshRenderer>().material;
         gameManager = GameObject.Find("GameManager").GetComponent<M1GameManager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -28,12 +34,18 @@ public class CategoryBox : MonoBehaviour
             GetComponent<MeshRenderer>().material = correctMaterial;
             correctParticles.SetActive(true);
             gameManager.AddCorrect();
+
+            audioSource.clip = correctClip;
+            audioSource.Play();
         }
         else 
         {
             GetComponent<MeshRenderer>().material = incorrectMaterial;
             incorrectParticles.SetActive(true);
             gameManager.AddIncorrect();
+
+            audioSource.clip = incorrectClip;
+            audioSource.Play();
         }
 
         Invoke(nameof(SwitchBackToDefaultMat), 0.2f);

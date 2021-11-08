@@ -24,12 +24,23 @@ public class PrinterController : MonoBehaviour
     int maxSteps = 7;
     int currMaxSteps;
 
+    [Header("Printer SFX")]
+    public AudioClip paperComeOutClip;
+    public AudioClip printerBrokenClip;
+    public AudioClip printerWorkingClip;
+
+    AudioSource audioSource;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         passPaperActions.Add(Direction.Up);
         passPaperActions.Add(Direction.Right);
         currMaxSteps = minSteps + 1;
+    }
 
+    public void StartSpawningPapers()
+    {
         StartCoroutine(SpawnPapers());
     }
 
@@ -67,6 +78,9 @@ public class PrinterController : MonoBehaviour
 
         // Display actions
         actionsController.DisplayActions(currentActions);
+
+        audioSource.clip = paperComeOutClip;
+        audioSource.Play();
     }
 
     void BreakPrinter()
@@ -83,6 +97,9 @@ public class PrinterController : MonoBehaviour
 
         // Display actions
         actionsController.DisplayActions(currentActions);
+
+        audioSource.clip = printerBrokenClip;
+        audioSource.Play();
     }
 
     // Update is called once per frame
@@ -155,5 +172,8 @@ public class PrinterController : MonoBehaviour
 
         // Update actions display
         actionsController.HideActions();
+
+        audioSource.clip = printerWorkingClip;
+        audioSource.Play();
     }
 }
