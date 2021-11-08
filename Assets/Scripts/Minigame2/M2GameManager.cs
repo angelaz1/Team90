@@ -34,11 +34,6 @@ public class M2GameManager : GameManager
         return;
     }
 
-    public override void DoOnWin()
-    {
-        return;
-    }
-
     public override void ExitToMain()
     {
         GameObject sManagerObj = GameObject.Find("SelectionManager");
