@@ -8,6 +8,8 @@ public class SelectionUIManager : MonoBehaviour
     public Button[] minigameButtons;
     public GameObject continueButton;
 
+    public ScoringController[] scorings;
+
     SelectionManager selectionManager;
 
     void Start()
@@ -21,6 +23,10 @@ public class SelectionUIManager : MonoBehaviour
         }
 
         //TODO: Show scores
+        for (int i = 0; i < scorings.Length; i++)
+        {
+            scorings[i].SetScore(selectionManager.GetScore(i));
+        }
 
         continueButton.SetActive(selectionManager.AllMinigamesCompleted());
     }

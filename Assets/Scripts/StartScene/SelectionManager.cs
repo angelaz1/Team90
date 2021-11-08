@@ -41,6 +41,12 @@ public class SelectionManager : MonoBehaviour
         return true;
     }
 
+    public int GetScore(int index)
+    {
+        if (index >= numMinigames) return 0;
+        return minigameScores[index];
+    }
+
     public void FinishMinigame(int index, int score)
     {
         finishedMinigames[index] = true;
