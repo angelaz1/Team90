@@ -12,14 +12,23 @@ public class M2PlayerController : MonoBehaviour
 
     bool keyDown;
 
+    bool gameStarted = false;
+
     void Start()
     {
         gridController = GameObject.Find("GridController").GetComponent<GridController>();
         gridController.SetPositionValue(playerRow, playerCol, GridValue.Player);
     }
 
+    public void AllowMovement()
+    {
+        gameStarted = true;
+    }
+
     void Update()
     {
+        if (!gameStarted) return;
+        
         if (!keyDown)
         {
             if (Input.GetAxis("Vertical") > 0)

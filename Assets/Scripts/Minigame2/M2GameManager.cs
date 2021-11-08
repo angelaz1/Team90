@@ -15,7 +15,7 @@ public class M2GameManager : GameManager
 
     public override void StartOtherGameObjects()
     {
-        //playerController.AllowMovement();
+        playerController.AllowMovement();
     }
 
     public void AddTotal()
