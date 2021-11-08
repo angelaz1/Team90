@@ -38,6 +38,7 @@ public class PapersController : MonoBehaviour
         int index = Random.Range(0, subjects.Length);
         GameObject newPaper = Instantiate(paperPrefab, otherPaperPosition.transform.position, Quaternion.identity, transform);
         newPaper.GetComponent<Paper>().InitializePaper(subjects[index]);
+        newPaper.transform.localRotation = Quaternion.identity;
         if (papers.Count == 0) newPaper.GetComponent<Paper>().MoveToPosition(currentPaperPosition.transform.position);
         if (papers.Count > 1) newPaper.SetActive(false);
         papers.Add(newPaper);
