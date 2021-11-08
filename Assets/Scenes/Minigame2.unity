@@ -894,7 +894,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1382,11 +1382,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8861552820187326160, guid: 2696adb206fd6434680e8d6d8a4e6f0f, type: 3}
       propertyPath: m_text
-      value: 'Help the squirrel push/pull the box!
+      value: 'Help the squirrel push/pull the box with its laser!
 
 
-        Get the box into the
-        purple square!'
+        Get the
+        box into the purple square!'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2696adb206fd6434680e8d6d8a4e6f0f, type: 3}
@@ -1433,7 +1433,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 29b5ae2113bdd96489492d2af0fe9d77, type: 2}
+  sharedProfile: {fileID: 11400000, guid: eb154360f50182a419c931bd96ddfde8, type: 2}
 --- !u!4 &1267748178
 Transform:
   m_ObjectHideFlags: 0
@@ -2396,6 +2396,22 @@ PrefabInstance:
     - target: {fileID: 573409318759264627, guid: af2e7b889899ed54da657f223eae6001, type: 3}
       propertyPath: m_Name
       value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640061692092806732, guid: af2e7b889899ed54da657f223eae6001, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640061692092806732, guid: af2e7b889899ed54da657f223eae6001, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0.0022010803
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271327429215432686, guid: af2e7b889899ed54da657f223eae6001, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.865
+      objectReference: {fileID: 0}
+    - target: {fileID: 6642419967195057672, guid: af2e7b889899ed54da657f223eae6001, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7794509747467692850, guid: af2e7b889899ed54da657f223eae6001, type: 3}
       propertyPath: m_LocalScale.x

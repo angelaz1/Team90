@@ -186,9 +186,7 @@ public class GridController : MonoBehaviour
 
             if (GetPositionValue(currRow, currCol) == GridValue.Destination)
             {
-                reachedDestination = true;
-                grid[currRow, currCol].StartParticles();
-                Invoke(nameof(ReachedDestination), 1f);
+                ReachedDestination();
                 break;
             }
 
@@ -199,7 +197,7 @@ public class GridController : MonoBehaviour
         box.SetPosition(boxRow, boxCol);
         SetPositionValue(boxRow, boxCol, GridValue.Box);
 
-        if (changedPos)
+        if (changedPos && !reachedDestination)
         {
             audioSource.clip = pushBoxClip;
             audioSource.Play();
@@ -231,9 +229,7 @@ public class GridController : MonoBehaviour
 
             if (GetPositionValue(currRow, currCol) == GridValue.Destination)
             {
-                reachedDestination = true;
-                grid[currRow, currCol].StartParticles();
-                Invoke(nameof(ReachedDestination), 1f);
+                ReachedDestination();
                 break;
             }
 
@@ -244,7 +240,7 @@ public class GridController : MonoBehaviour
         box.SetPosition(boxRow, boxCol);
         SetPositionValue(boxRow, boxCol, GridValue.Box);
 
-        if (changedPos)
+        if (changedPos && !reachedDestination)
         { 
             audioSource.clip = pullBoxClip;
             audioSource.Play();
@@ -253,11 +249,19 @@ public class GridController : MonoBehaviour
 
     void ReachedDestination()
     {
-        gameManager.AddTotal();
-        reachedDestination = false;
+        reachedDestination = true;
 
+        grid[boxRow, boxCol].StartParticles();
         audioSource.clip = successClip;
         audioSource.Play();
+
+        Invoke(nameof(ActuallyReachedDestination), 1f);
+    }
+
+    void ActuallyReachedDestination()
+    {
+        gameManager.AddTotal();
+        reachedDestination = false;
 
         grid[boxRow, boxCol].StopParticles();
         Destroy(box.gameObject);
