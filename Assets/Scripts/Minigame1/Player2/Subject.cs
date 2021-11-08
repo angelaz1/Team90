@@ -10,10 +10,19 @@ public class Subject
 {
     public string subjectName;
     public string subjectTypeStr;
+    public string subjectPictureFilePath;
 
     public Classification subjectClassification {
-        get {
+        get 
+        {
             return (Classification)Enum.Parse(typeof(Classification), subjectTypeStr);
+        }
+    }
+
+    public Sprite subjectPicture {
+        get
+        {
+            return Resources.Load<Sprite>(subjectPictureFilePath);
         }
     }
 

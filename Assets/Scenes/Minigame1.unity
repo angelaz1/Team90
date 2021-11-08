@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.119071946, g: 0.15244836, b: 0.33983168, a: 1}
+  m_IndirectSpecularColor: {r: 0.07366258, g: 0.09659108, b: 0.28888884, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -320,6 +320,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1799025092}
     m_Modifications:
+    - target: {fileID: 8064291777322730739, guid: b990c04b8dc4cef4dbab1ace998e30eb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 426789191}
+    - target: {fileID: 8064291777322730739, guid: b990c04b8dc4cef4dbab1ace998e30eb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ExitToMain
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064291777322730739, guid: b990c04b8dc4cef4dbab1ace998e30eb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: M1GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8064291778588762620, guid: b990c04b8dc4cef4dbab1ace998e30eb, type: 3}
       propertyPath: m_Name
       value: WinScreen

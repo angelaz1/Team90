@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
 {
-    int numMinigames = 2;
-    bool[] finishedMinigames;
-    int[] minigameScores;
+    static int numMinigames = 2;
+    static bool[] finishedMinigames;
+    static int[] minigameScores;
 
-    void Awake()
+    private static SelectionManager _instance;
+
+    public static SelectionManager Instance { get { return _instance; } }
+
+    private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        finishedMinigames = new bool[numMinigames];
-        minigameScores = new int[numMinigames];
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+            finishedMinigames = new bool[numMinigames];
+            minigameScores = new int[numMinigames];
+        }
     }
 
     public int GetNumMinigames()

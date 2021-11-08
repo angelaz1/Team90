@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class Paper : MonoBehaviour
 {
     public TextMeshProUGUI descriptionText; // Used in place of art assets right now
+    public Image image;
     Classification classification;
 
     float moveSpeed = 3;
@@ -17,6 +19,7 @@ public class Paper : MonoBehaviour
     public void InitializePaper(Subject subject)
     {
         descriptionText.text = subject.subjectName;
+        image.sprite = subject.subjectPicture;
         classification = subject.subjectClassification;
 
         // Would also need to change art assets as needed

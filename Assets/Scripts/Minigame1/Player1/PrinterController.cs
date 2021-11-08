@@ -108,6 +108,8 @@ public class PrinterController : MonoBehaviour
 
     void HandleAction(Direction dir)
     {
+        if (currentActions.Count == 0) return;
+        
         keyDown = true;
 
         if (currentActions[0] == dir)
