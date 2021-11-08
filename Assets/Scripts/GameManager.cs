@@ -15,6 +15,11 @@ public abstract class GameManager : MonoBehaviour
     public GameObject countdownPanel;
     public TextMeshProUGUI countdownText;
 
+    [Header("Scoring")]
+    public int maxScore = 8;
+    protected int currentScore = 0;
+    public ScoringController scoring;
+
     [Header("SFX")]
     public AudioClip refereeClip;
     public AudioClip winClip;
@@ -75,10 +80,20 @@ public abstract class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         winScreen.SetActive(true);
+        scoring.SetScore(ComputeScore());
 
         // TODO: play clip based on score
         audioSource.clip = winClip;
         audioSource.Play();
+    }
+
+    public int ComputeScore()
+    {
+        if (currentScore < maxScore / 5) return 1;
+        if (currentScore < 2 * maxScore / 5) return 2;
+        if (currentScore < 3 * maxScore / 5) return 3;
+        if (currentScore < 4 * maxScore / 5) return 4;
+        return 5;
     }
 
     void UpdateTimerText()

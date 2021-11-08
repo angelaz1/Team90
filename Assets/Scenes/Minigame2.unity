@@ -1792,9 +1792,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 2068459526}
   winScreen: {fileID: 872937753}
-  gameTime: 60
+  gameTime: 90
   countdownPanel: {fileID: 242414084}
   countdownText: {fileID: 1343200084}
+  maxScore: 5
+  scoring: {fileID: 8064291778387581158}
   refereeClip: {fileID: 8300000, guid: 826d734faa10e23439a4fb123ba94e02, type: 3}
   winClip: {fileID: 8300000, guid: e767a07ada83f4641aaa403a3b33bcfb, type: 3}
   loseClip: {fileID: 8300000, guid: fc0c4a427ec4f6248b592f7b72fbf87a, type: 3}
@@ -2502,3 +2504,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b990c04b8dc4cef4dbab1ace998e30eb, type: 3}
+--- !u!114 &8064291778387581158 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 169825756984414437, guid: b990c04b8dc4cef4dbab1ace998e30eb, type: 3}
+  m_PrefabInstance: {fileID: 8064291778387581157}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc2aa8e44251de4da8680cd0aa3a75f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -426,7 +426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8064291778588762623, guid: b990c04b8dc4cef4dbab1ace998e30eb, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8064291778588762623, guid: b990c04b8dc4cef4dbab1ace998e30eb, type: 3}
       propertyPath: m_AnchorMax.x
@@ -512,6 +512,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8064291778588762620, guid: b990c04b8dc4cef4dbab1ace998e30eb, type: 3}
   m_PrefabInstance: {fileID: 389002279}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &389002282 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 169825756984414437, guid: b990c04b8dc4cef4dbab1ace998e30eb, type: 3}
+  m_PrefabInstance: {fileID: 389002279}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dc2aa8e44251de4da8680cd0aa3a75f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &426789190
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,6 +558,8 @@ MonoBehaviour:
   gameTime: 90
   countdownPanel: {fileID: 101339957}
   countdownText: {fileID: 2028240917}
+  maxScore: 10
+  scoring: {fileID: 389002282}
   refereeClip: {fileID: 8300000, guid: 826d734faa10e23439a4fb123ba94e02, type: 3}
   winClip: {fileID: 8300000, guid: e767a07ada83f4641aaa403a3b33bcfb, type: 3}
   loseClip: {fileID: 8300000, guid: fc0c4a427ec4f6248b592f7b72fbf87a, type: 3}
@@ -2047,7 +2060,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 389002280}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
