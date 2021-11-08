@@ -43,10 +43,10 @@ Material:
     - _LightProbeContribution: 5
     - _OutlineDepthSensitivity: 1
     - _OutlineNormalsSensitivity: 1
-    - _OutlineThickness: 2
+    - _OutlineThickness: 0.02
     - _Smoothness: 1
     m_Colors:
-    - _MainColor: {r: 0.9433962, g: 0.89174944, b: 0.5646533, a: 0}
+    - _MainColor: {r: 1, g: 0.9321374, b: 0.8060796, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
