@@ -29,6 +29,11 @@ public class M2GameManager : GameManager
         totalText.text = $"# Boxes Delivered: {numTotal}";
     }
 
+    public override void DoOnWin()
+    {
+        return;
+    }
+
     public override void ExitToMain()
     {
         GameObject sManagerObj = GameObject.Find("SelectionManager");

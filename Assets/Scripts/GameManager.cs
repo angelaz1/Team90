@@ -85,7 +85,11 @@ public abstract class GameManager : MonoBehaviour
         // TODO: play clip based on score
         audioSource.clip = winClip;
         audioSource.Play();
+
+        DoOnWin();
     }
+
+    public abstract void DoOnWin();
 
     public int ComputeScore()
     {

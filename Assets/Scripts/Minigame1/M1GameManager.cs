@@ -11,9 +11,10 @@ public class M1GameManager : GameManager
     public TextMeshProUGUI accuracyText;
 
     public PrinterController printerController;
+    public PapersController papersController;
 
     //float numCorrect = 0;
-    int numTotal = 0;
+    //int numTotal = 0;
 
     public override void StartOtherGameObjects()
     {
@@ -38,6 +39,11 @@ public class M1GameManager : GameManager
         totalText.text = $"# Papers Sorted: {currentScore}";
         //string accuracyStr = numTotal == 0 ? "0.00" : string.Format("{0:0.00}", numCorrect / numTotal * 100f);
         //accuracyText.text = $"Accuracy: {accuracyStr}%";
+    }
+
+    public override void DoOnWin()
+    {
+        papersController.WinGame();
     }
 
     public override void ExitToMain()

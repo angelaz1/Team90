@@ -490,6 +490,7 @@ MonoBehaviour:
   totalText: {fileID: 1515222559}
   accuracyText: {fileID: 1821792197}
   printerController: {fileID: 988452762390804430}
+  papersController: {fileID: 7114610701473060552}
 --- !u!4 &426789192
 Transform:
   m_ObjectHideFlags: 0
@@ -1258,6 +1259,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037661221}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1103574089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4843642102055109847, guid: 915e186007fec234b8dca70cb431fcee, type: 3}
+  m_PrefabInstance: {fileID: 5388732176097376805}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1156276354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2362,6 +2368,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7114610699972191896, guid: 915e186007fec234b8dca70cb431fcee, type: 3}
+      propertyPath: pikachu
+      value: 
+      objectReference: {fileID: 1103574089}
     - target: {fileID: 7114610699972191899, guid: 915e186007fec234b8dca70cb431fcee, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9978627
