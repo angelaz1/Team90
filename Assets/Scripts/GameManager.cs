@@ -12,6 +12,7 @@ public abstract class GameManager : MonoBehaviour
 
     public int gameTime = 60;
 
+    public GameObject tutorialPanel;
     public GameObject countdownPanel;
     public TextMeshProUGUI countdownText;
 
@@ -38,6 +39,9 @@ public abstract class GameManager : MonoBehaviour
     IEnumerator StartCountdown()
     {
         // Show a tutorial
+        tutorialPanel.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        tutorialPanel.SetActive(false);
 
         // Start countdown
         countdownPanel.SetActive(true);

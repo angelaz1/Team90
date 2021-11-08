@@ -2418,7 +2418,7 @@ MonoBehaviour:
   paperPrefab: {fileID: 5475705921346617385, guid: 935fefc627a700f4d990abc438010481, type: 3}
   animalBox: {fileID: 415600454828593287}
   humanBox: {fileID: 415600454024036264}
-  pikachu: {fileID: 0}
+  pikachu: {fileID: 4843642102055109847}
   currentPaperPosition: {fileID: 7114610699588889327}
   otherPaperPosition: {fileID: 7114610700765767812}
 --- !u!1 &7114610700660213153
