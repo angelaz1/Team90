@@ -11,7 +11,7 @@ public class M2GameManager : GameManager
 
     public M2PlayerController playerController;
 
-    float numTotal = 0;
+    //float numTotal = 0;
 
     public override void StartOtherGameObjects()
     {
@@ -20,13 +20,18 @@ public class M2GameManager : GameManager
 
     public void AddTotal()
     {
-        numTotal++;
+        currentScore++;
         UpdateText();
     }
 
     void UpdateText()
     {
-        totalText.text = $"# Boxes Delivered: {numTotal}";
+        totalText.text = $"# Boxes Delivered: {currentScore}";
+    }
+
+    public override void DoOnWin()
+    {
+        return;
     }
 
     public override void DoOnWin()
