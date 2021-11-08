@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
-using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class M2GameManager : MonoBehaviour
 {
@@ -54,5 +54,10 @@ public class M2GameManager : MonoBehaviour
     void UpdateText()
     {
         totalText.text = $"# Boxes Delivered: {numTotal}";
+    }
+
+    public void ExitToMain()
+    {
+        SceneManager.LoadScene("Start"); // TODO: Change to main menu
     }
 }
