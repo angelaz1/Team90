@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ActionsController : MonoBehaviour
@@ -37,7 +38,7 @@ public class ActionsController : MonoBehaviour
     public void CompletedAction()
     {
         // Temporary as we use keyboard input
-        actions[currentActionIndex].GetComponent<TextMeshProUGUI>().color = Color.green;
+        actions[currentActionIndex].GetComponent<Image>().color = Color.green;
 
         currentActionIndex++;
     }
@@ -45,7 +46,7 @@ public class ActionsController : MonoBehaviour
     public void IncorrectAction()
     {
         // Temporary as we use keyboard input
-        actions[currentActionIndex].GetComponent<TextMeshProUGUI>().color = Color.red;
+        actions[currentActionIndex].GetComponent<Image>().color = Color.red;
     }
 
     public void HideActions()

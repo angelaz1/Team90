@@ -9,6 +9,7 @@ public class PrinterController : MonoBehaviour
     public GameObject paperObject;
     public float spawnTimeMin;
     public float spawnTimeMax;
+    public GameObject smoke;
 
     public ActionsController actionsController;
     public PapersController papersController;
@@ -20,16 +21,31 @@ public class PrinterController : MonoBehaviour
     bool printerBroken = false;
     bool keyDown = false;
 
+    const int startingBreakThreshold = 20;
+    int currentMinBreakThreshold;
+
     int minSteps = 3;
-    int maxSteps = 7;
+    int maxSteps = 6;
     int currMaxSteps;
+
+    [Header("Printer SFX")]
+    public AudioClip paperComeOutClip;
+    public AudioClip printerBrokenClip;
+    public AudioClip printerWorkingClip;
+
+    AudioSource audioSource;
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         passPaperActions.Add(Direction.Up);
         passPaperActions.Add(Direction.Right);
         currMaxSteps = minSteps + 1;
+        currentMinBreakThreshold = startingBreakThreshold;
+    }
 
+    public void StartSpawningPapers()
+    {
         StartCoroutine(SpawnPapers());
     }
 
@@ -38,14 +54,15 @@ public class PrinterController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(spawnTimeMin, spawnTimeMax));
-            int rng = Random.Range(0, 10);
-            if (rng > 8)
+            int rng = Random.Range(0, startingBreakThreshold + 1); 
+            if (rng > currentMinBreakThreshold)
             {
                 BreakPrinter();
             }
             else
             {
                 SpawnPaper();
+                currentMinBreakThreshold -= 1;
             }
 
             while (paperSpawned || printerBroken)
@@ -67,6 +84,9 @@ public class PrinterController : MonoBehaviour
 
         // Display actions
         actionsController.DisplayActions(currentActions);
+
+        audioSource.clip = paperComeOutClip;
+        audioSource.Play();
     }
 
     void BreakPrinter()
@@ -79,10 +99,16 @@ public class PrinterController : MonoBehaviour
             Direction randDir = (Direction)Random.Range(0, 4);
             currentActions.Add(randDir);
         }
-        currMaxSteps = Mathf.Min(currMaxSteps + 1, maxSteps);
+
+        if (Random.Range(0f, 1f) < 0.5f) currMaxSteps = Mathf.Min(currMaxSteps + 1, maxSteps);
 
         // Display actions
         actionsController.DisplayActions(currentActions);
+
+        audioSource.clip = printerBrokenClip;
+        audioSource.Play();
+
+        smoke.SetActive(true);
     }
 
     // Update is called once per frame
@@ -155,5 +181,12 @@ public class PrinterController : MonoBehaviour
 
         // Update actions display
         actionsController.HideActions();
+
+        audioSource.clip = printerWorkingClip;
+        audioSource.Play();
+
+        smoke.SetActive(false);
+
+        currentMinBreakThreshold = startingBreakThreshold;
     }
 }
