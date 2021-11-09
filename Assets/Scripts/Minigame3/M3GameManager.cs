@@ -9,12 +9,11 @@ public class M3GameManager : GameManager
     [Header("Minigame 3 Variables")]
     public TextMeshProUGUI totalText;
 
-    //public PrinterController printerController;
-    //public PapersController papersController;
+    public ScreenController screenController;
 
     public override void StartOtherGameObjects()
     {
-        //printerController.StartSpawningPapers();
+        screenController.StartCreatingGreetings();
     }
 
     public override void UpdateScoreText()

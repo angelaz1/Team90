@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class ActionsController : MonoBehaviour
 {
@@ -12,11 +13,14 @@ public class ActionsController : MonoBehaviour
     public GameObject rightPrefab;
     public GameObject fPrefab;
     public GameObject gPrefab;
+    public GameObject placeholderPrefab;
 
     Dictionary<Action, GameObject> actionPrefabs = new Dictionary<Action, GameObject>();
     List<GameObject> actions = new List<GameObject>();
 
     int currentActionIndex = 0;
+
+    UnityEvent doneDisplayingSeqActions;
 
     private void Start()
     {
@@ -26,30 +30,79 @@ public class ActionsController : MonoBehaviour
         actionPrefabs.Add(Action.Right, rightPrefab);
         actionPrefabs.Add(Action.F, fPrefab);
         actionPrefabs.Add(Action.G, gPrefab);
+
+        if (doneDisplayingSeqActions == null)
+            doneDisplayingSeqActions = new UnityEvent();
+    }
+
+    public void AddListenerToSeqActions(UnityAction action)
+    {
+        doneDisplayingSeqActions.AddListener(action);
     }
 
     public void DisplayActions(List<Action> actions)
     {
+        GameObject actionObj;
+
         foreach (Action act in actions)
         {
-            GameObject actionObj;
             actionPrefabs.TryGetValue(act, out actionObj);
 
             if (actionObj) this.actions.Add(Instantiate(actionObj, transform));
         }
     }
 
-    public void CompletedAction()
+    public void DisplayActionsSequentially(List<Action> actions, float waitTime)
     {
-        // Temporary as we use keyboard input
+        SetPlaceholders(actions.Count);
+        StartCoroutine(DisplayActionsSeq(actions, waitTime));
+    }
+
+    public void SetPlaceholders(int numActions)
+    {
+        for (int i = 0; i < numActions; i++)
+        {
+            actions.Add(Instantiate(placeholderPrefab, transform));
+        }
+    }
+
+    IEnumerator DisplayActionsSeq(List<Action> newActions, float waitTime)
+    {
+        GameObject actionObj;
+
+        for (int i = 0; i < actions.Count; i++)
+        {
+            yield return new WaitForSeconds(waitTime);
+            actionPrefabs.TryGetValue(newActions[i], out actionObj);
+
+            if (actionObj)
+            {
+                actions[i].GetComponent<Image>().sprite = actionObj.GetComponent<Image>().sprite;
+                actions[i].GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            } 
+        }
+
+        doneDisplayingSeqActions.Invoke();
+    }
+
+    public void ShowCorrectAction(Action action)
+    {
+        GameObject actionObj;
+        actionPrefabs.TryGetValue(action, out actionObj);
+
+        actions[currentActionIndex].GetComponent<Image>().sprite = actionObj.GetComponent<Image>().sprite;
         actions[currentActionIndex].GetComponent<Image>().color = Color.green;
 
         currentActionIndex++;
     }
 
-    public void IncorrectAction()
+    public void ShowIncorrectAction(Action action)
     {
         // Temporary as we use keyboard input
+        GameObject actionObj;
+        actionPrefabs.TryGetValue(action, out actionObj);
+
+        actions[currentActionIndex].GetComponent<Image>().sprite = actionObj.GetComponent<Image>().sprite;
         actions[currentActionIndex].GetComponent<Image>().color = Color.red;
     }
 
