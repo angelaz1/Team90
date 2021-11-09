@@ -3343,6 +3343,7 @@ GameObject:
   - component: {fileID: 1312632516}
   - component: {fileID: 1312632515}
   - component: {fileID: 1312632514}
+  - component: {fileID: 1312632513}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3350,6 +3351,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &1312632513
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312632512}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 18d7debc7ef48bc409efbad1eb5497dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1312632514
 MonoBehaviour:
   m_ObjectHideFlags: 0
