@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ActionsController : MonoBehaviour
+public class DirActionsController : MonoBehaviour
 {
     public GameObject upPrefab;
     public GameObject leftPrefab;
