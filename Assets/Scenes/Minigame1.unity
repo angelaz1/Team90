@@ -2379,7 +2379,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' Papers Classified: 0 / 8'
+  m_text: ' Papers Sorted: 0 / 8'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: de7c05c63a7d8b14aaac77cdc79e5e2e, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: de7c05c63a7d8b14aaac77cdc79e5e2e, type: 2}

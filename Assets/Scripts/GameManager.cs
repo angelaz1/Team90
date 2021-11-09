@@ -31,6 +31,7 @@ public abstract class GameManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         winScreen.SetActive(false);
+        UpdateScoreText();
         StartCoroutine(StartCountdown());
     }
 
