@@ -49,9 +49,11 @@ public class Loading : MonoBehaviour
 
     public void PlayerPrepare(string sceneIndex)
     {
+        if (startTakingInput) return;
         sceneName = sceneIndex;
         IMG_Loading.SetActive(true);
         startTakingInput = true;
+        GameObject.Find("PlayerSelection").GetComponent<PlayerSelectionController>().DisableControls();
     }
 
     public void LoadScene(string sceneName)
