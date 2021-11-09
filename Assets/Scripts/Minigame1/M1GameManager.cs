@@ -13,32 +13,14 @@ public class M1GameManager : GameManager
     public PrinterController printerController;
     public PapersController papersController;
 
-    //float numCorrect = 0;
-    //int numTotal = 0;
-
     public override void StartOtherGameObjects()
     {
         printerController.StartSpawningPapers();
     }
 
-    public void AddCorrect()
+    public override void UpdateScoreText()
     {
-        //numCorrect++;
-        currentScore++;
-        UpdateText();
-    }
-
-    public void AddIncorrect()
-    {
-        //numTotal++;
-        UpdateText();
-    }
-
-    void UpdateText()
-    {
-        totalText.text = $"# Papers Sorted: {currentScore}";
-        //string accuracyStr = numTotal == 0 ? "0.00" : string.Format("{0:0.00}", numCorrect / numTotal * 100f);
-        //accuracyText.text = $"Accuracy: {accuracyStr}%";
+        totalText.text = $"Papers Sorted: {currentScore} / {maxScore}";
     }
 
     public override void DoOnWin()

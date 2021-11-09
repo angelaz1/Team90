@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
 {
-    static int numMinigames = 2;
+    static int numMinigames = 3;
     static bool[] finishedMinigames;
     static int[] minigameScores;
 

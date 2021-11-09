@@ -68,31 +68,6 @@ public class M2PlayerController : MonoBehaviour
 
         if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0) keyDown = false;
 
-        //if (Input.GetKeyDown(KeyCode.W))
-        //{
-        //    transform.rotation = Quaternion.Euler(0, 0, 0);
-        //    playerDirection = Direction.Up;
-        //    TryMove(playerRow + 1, playerCol);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.S))
-        //{
-        //    transform.rotation = Quaternion.Euler(0, 180, 0);
-        //    playerDirection = Direction.Down;
-        //    TryMove(playerRow - 1, playerCol);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.A))
-        //{
-        //    transform.rotation = Quaternion.Euler(0, -90, 0);
-        //    playerDirection = Direction.Left;
-        //    TryMove(playerRow, playerCol - 1);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.D))
-        //{
-        //    transform.rotation = Quaternion.Euler(0, 90, 0);
-        //    playerDirection = Direction.Right;
-        //    TryMove(playerRow, playerCol + 1);
-        //}
-
         if (Input.GetKeyDown(KeyCode.F))
         {
             // Check for box

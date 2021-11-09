@@ -260,7 +260,7 @@ public class GridController : MonoBehaviour
 
     void ActuallyReachedDestination()
     {
-        gameManager.AddTotal();
+        gameManager.AddToScore();
         reachedDestination = false;
 
         grid[boxRow, boxCol].StopParticles();
