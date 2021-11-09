@@ -41,6 +41,7 @@ public class ScreenController : MonoBehaviour
 
     void StartListening()
     {
+        Camera.main.gameObject.GetComponent<Animator>().SetBool("IsZoomed", false);
         screenActionsController.HideActions();
         acceptingInput = true;
     }
@@ -63,6 +64,7 @@ public class ScreenController : MonoBehaviour
 
     void DisplayGreeting()
     {
+        Camera.main.gameObject.GetComponent<Animator>().SetBool("IsZoomed", true);
         screenActionsController.DisplayActionsSequentially(currentGreeting, inBetweenWaitTime);
         playerActionsController.HideActions();
         playerActionsController.SetPlaceholders(currentGreeting.Count);
