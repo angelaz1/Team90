@@ -5,8 +5,11 @@ using UnityEngine;
 public class SelectionManager : MonoBehaviour
 {
     static int numMinigames = 2;
-    static bool[] finishedMinigames;
+    public static bool[] finishedMinigames;
     static int[] minigameScores;
+
+    public GameObject[] checkUI_game= new GameObject[3];
+  
 
     private static SelectionManager _instance;
 
@@ -46,10 +49,19 @@ public class SelectionManager : MonoBehaviour
         if (index >= numMinigames) return 0;
         return minigameScores[index];
     }
+    
 
     public void FinishMinigame(int index, int score)
     {
         finishedMinigames[index] = true;
         minigameScores[index] = Mathf.Max(minigameScores[index], score);
+    }
+    
+
+    public void CheckFinishMinigame(int index)
+    {
+        finishedMinigames[index] = true;
+        checkUI_game[index].SetActive(true);
+        //    minigameScores[index] = Mathf.Max(minigameScores[index]);
     }
 }
