@@ -8,7 +8,6 @@ public class SelectionUIManager : MonoBehaviour
     public Button[] minigameButtons;
     public GameObject continueButton;
 
-    public ScoringController[] scorings;
     public GameObject[] finishIcon;
 
     SelectionManager selectionManager;
@@ -18,7 +17,6 @@ public class SelectionUIManager : MonoBehaviour
     {
         selectionManager = GameObject.Find("SelectionManager").GetComponent<SelectionManager>();
        
-        
         int numMinigames = selectionManager.GetNumMinigames();
         List<GameObject> buttons = new List<GameObject>();
 
@@ -31,15 +29,12 @@ public class SelectionUIManager : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < scorings.Length; i++)
-        {
-            scorings[i].SetScore(selectionManager.GetScore(i));
-        }
         for (int i=0;i< finishIcon.Length; i++)
         {
             finishIcon[i].SetActive(selectionManager.GetFinishedMinigames(i));
         }
         continueButton.SetActive(selectionManager.AllMinigamesCompleted());
+        
         if (selectionManager.AllMinigamesCompleted())
         {
             buttons.Add(continueButton);
@@ -48,5 +43,4 @@ public class SelectionUIManager : MonoBehaviour
         playerSelection = GameObject.Find("PlayerSelection").GetComponent<PlayerSelectionController>();
         playerSelection.SetButtons(buttons);
     }
-
 }
