@@ -5,10 +5,10 @@ using UnityEngine;
 public class SelectionManager : MonoBehaviour
 {
     static int numMinigames = 3;
-    static bool[] finishedMinigames;
+    public static bool[] finishedMinigames;
     static int[] minigameScores;
 
-    public GameObject[] checkUI_game= new GameObject[3];
+  //  public GameObject[] checkUI_game;
   
 
     private static SelectionManager _instance;
@@ -34,7 +34,10 @@ public class SelectionManager : MonoBehaviour
     {
         return numMinigames;
     }
-
+    public bool GetFinishedMinigames(int index)
+    {
+        return finishedMinigames[index];
+    }
     public bool AllMinigamesCompleted()
     {
         foreach (bool finished in finishedMinigames)
@@ -55,13 +58,9 @@ public class SelectionManager : MonoBehaviour
     {
         finishedMinigames[index] = true;
         minigameScores[index] = Mathf.Max(minigameScores[index], score);
+     //   checkUI_game[index].SetActive(true);
     }
     
 
-    public void CheckFinishMinigame(int index)
-    {
-        finishedMinigames[index] = true;
-        checkUI_game[index].SetActive(true);
-        //    minigameScores[index] = Mathf.Max(minigameScores[index]);
-    }
+    
 }
