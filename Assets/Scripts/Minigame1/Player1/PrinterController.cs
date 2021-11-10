@@ -11,7 +11,7 @@ public class PrinterController : MonoBehaviour
     public float spawnTimeMax;
     public GameObject smoke;
 
-    public ActionsController actionsController;
+    public DirActionsController actionsController;
     public PapersController papersController;
 
     List<Direction> currentActions = new List<Direction>(); // List of directions that need to be fulfilled to do current action

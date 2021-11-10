@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 public abstract class GameManager : MonoBehaviour
 {
     [Header("Game Manager Variables")]
-    public TextMeshProUGUI timerText;
     public GameObject winScreen;
 
     public int gameTime = 60;
 
+    public GameObject tutorialPanel;
     public GameObject countdownPanel;
     public TextMeshProUGUI countdownText;
 
@@ -31,13 +31,16 @@ public abstract class GameManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         winScreen.SetActive(false);
-        UpdateTimerText();
+        UpdateScoreText();
         StartCoroutine(StartCountdown());
     }
 
     IEnumerator StartCountdown()
     {
         // Show a tutorial
+        tutorialPanel.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        tutorialPanel.SetActive(false);
 
         // Start countdown
         countdownPanel.SetActive(true);
@@ -59,30 +62,28 @@ public abstract class GameManager : MonoBehaviour
         countdownPanel.SetActive(false);
 
         StartOtherGameObjects();
-        StartCoroutine(StartTimer());
     }
 
     public abstract void StartOtherGameObjects();
 
-    IEnumerator StartTimer()
+    public void AddToScore()
     {
-        while (gameTime > 0)
+        currentScore++;
+        UpdateScoreText();
+        if (currentScore >= maxScore)
         {
-            UpdateTimerText();
-            yield return new WaitForSeconds(1f);
-            gameTime--;
+            EndGame();
         }
-        UpdateTimerText();
-        EndGame();
     }
+
+    public abstract void UpdateScoreText();
 
     void EndGame()
     {
         Time.timeScale = 0;
         winScreen.SetActive(true);
         scoring.SetScore(ComputeScore());
-
-        // TODO: play clip based on score
+        
         audioSource.clip = winClip;
         audioSource.Play();
 
@@ -98,13 +99,6 @@ public abstract class GameManager : MonoBehaviour
         if (currentScore < 3 * maxScore / 5) return 3;
         if (currentScore < 4 * maxScore / 5) return 4;
         return 5;
-    }
-
-    void UpdateTimerText()
-    {
-        string minutes = string.Format("{0:00}", gameTime / 60);
-        string seconds = string.Format("{0:00}", gameTime % 60);
-        timerText.text = $"Time: {minutes}:{seconds}";
     }
 
     public abstract void ExitToMain();

@@ -23,11 +23,18 @@ public class GridController : MonoBehaviour
     int destCol;
     bool reachedDestination = false;
 
+    [Header("SFX")]
+    public AudioClip pushBoxClip;
+    public AudioClip pullBoxClip;
+    public AudioClip successClip;
+    AudioSource audioSource;
+
     M2GameManager gameManager;
 
     void Awake()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<M2GameManager>();
+        audioSource = GetComponent<AudioSource>();
 
         grid = new GridSpaceController[height, width];
 
@@ -169,15 +176,17 @@ public class GridController : MonoBehaviour
         int currRow = boxRow + yOff;
         int currCol = boxCol + xOff;
 
+        bool changedPos = false;
+
         while (IsValidPosition(currRow, currCol))
         {
+            changedPos = true;
             boxRow = currRow;
             boxCol = currCol;
 
             if (GetPositionValue(currRow, currCol) == GridValue.Destination)
             {
-                reachedDestination = true;
-                Invoke(nameof(ReachedDestination), 1f);
+                ReachedDestination();
                 break;
             }
 
@@ -187,6 +196,12 @@ public class GridController : MonoBehaviour
 
         box.SetPosition(boxRow, boxCol);
         SetPositionValue(boxRow, boxCol, GridValue.Box);
+
+        if (changedPos && !reachedDestination)
+        {
+            audioSource.clip = pushBoxClip;
+            audioSource.Play();
+        }
     }
 
     public void PullBox(Direction dir)
@@ -199,6 +214,8 @@ public class GridController : MonoBehaviour
         int currRow = boxRow - yOff;
         int currCol = boxCol - xOff;
 
+        bool changedPos = false;
+
         while (IsValidPosition(currRow, currCol))
         {
             if (GetPositionValue(currRow, currCol) == GridValue.Player)
@@ -206,13 +223,13 @@ public class GridController : MonoBehaviour
                 break;
             }
 
+            changedPos = true;
             boxRow = currRow;
             boxCol = currCol;
 
             if (GetPositionValue(currRow, currCol) == GridValue.Destination)
             {
-                reachedDestination = true;
-                Invoke(nameof(ReachedDestination), 1f);
+                ReachedDestination();
                 break;
             }
 
@@ -222,12 +239,31 @@ public class GridController : MonoBehaviour
 
         box.SetPosition(boxRow, boxCol);
         SetPositionValue(boxRow, boxCol, GridValue.Box);
+
+        if (changedPos && !reachedDestination)
+        { 
+            audioSource.clip = pullBoxClip;
+            audioSource.Play();
+        }
     }
 
     void ReachedDestination()
     {
-        gameManager.AddTotal();
+        reachedDestination = true;
+
+        grid[boxRow, boxCol].StartParticles();
+        audioSource.clip = successClip;
+        audioSource.Play();
+
+        Invoke(nameof(ActuallyReachedDestination), 1f);
+    }
+
+    void ActuallyReachedDestination()
+    {
+        gameManager.AddToScore();
         reachedDestination = false;
+
+        grid[boxRow, boxCol].StopParticles();
         Destroy(box.gameObject);
 
         SetPositionValue(boxRow, boxCol, GridValue.Space);

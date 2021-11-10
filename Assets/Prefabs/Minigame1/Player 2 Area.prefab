@@ -1749,8 +1749,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4843642102055109847}
   m_LocalRotation: {x: -0, y: -0.15376456, z: -0, w: 0.9881075}
-  m_LocalPosition: {x: 1.21, y: -1.98, z: -2.76}
-  m_LocalScale: {x: 2.623847, y: 2.623847, z: 2.623847}
+  m_LocalPosition: {x: 1.26, y: -1.47, z: -2.91}
+  m_LocalScale: {x: 2.4664161, y: 2.4664161, z: 2.4664161}
   m_Children:
   - {fileID: 479409538522763799}
   - {fileID: 9142239536758542636}
@@ -2418,6 +2418,7 @@ MonoBehaviour:
   paperPrefab: {fileID: 5475705921346617385, guid: 935fefc627a700f4d990abc438010481, type: 3}
   animalBox: {fileID: 415600454828593287}
   humanBox: {fileID: 415600454024036264}
+  pikachu: {fileID: 4843642102055109847}
   currentPaperPosition: {fileID: 7114610699588889327}
   otherPaperPosition: {fileID: 7114610700765767812}
 --- !u!1 &7114610700660213153

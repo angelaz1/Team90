@@ -14,10 +14,19 @@ public class M2PlayerController : MonoBehaviour
 
     bool gameStarted = false;
 
+    public LineRenderer grabLine;
+
+    [Header("SFX")]
+    public AudioClip walkClip;
+    AudioSource audioSource;
+
     void Start()
     {
         gridController = GameObject.Find("GridController").GetComponent<GridController>();
         gridController.SetPositionValue(playerRow, playerCol, GridValue.Player);
+        grabLine.gameObject.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void AllowMovement()
@@ -59,31 +68,6 @@ public class M2PlayerController : MonoBehaviour
 
         if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0) keyDown = false;
 
-        //if (Input.GetKeyDown(KeyCode.W))
-        //{
-        //    transform.rotation = Quaternion.Euler(0, 0, 0);
-        //    playerDirection = Direction.Up;
-        //    TryMove(playerRow + 1, playerCol);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.S))
-        //{
-        //    transform.rotation = Quaternion.Euler(0, 180, 0);
-        //    playerDirection = Direction.Down;
-        //    TryMove(playerRow - 1, playerCol);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.A))
-        //{
-        //    transform.rotation = Quaternion.Euler(0, -90, 0);
-        //    playerDirection = Direction.Left;
-        //    TryMove(playerRow, playerCol - 1);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.D))
-        //{
-        //    transform.rotation = Quaternion.Euler(0, 90, 0);
-        //    playerDirection = Direction.Right;
-        //    TryMove(playerRow, playerCol + 1);
-        //}
-
         if (Input.GetKeyDown(KeyCode.F))
         {
             // Check for box
@@ -93,6 +77,8 @@ public class M2PlayerController : MonoBehaviour
                 Debug.Log("Pull Box");
                 gridController.PullBox(playerDirection);
             }
+
+            StartCoroutine(RenderGrabLine());
         }
         else if (Input.GetKeyDown(KeyCode.G))
         {
@@ -103,12 +89,39 @@ public class M2PlayerController : MonoBehaviour
                 Debug.Log("Push Box");
                 gridController.PushBox(playerDirection);
             }
+
+            StartCoroutine(RenderGrabLine());
         }
+    }
+
+    IEnumerator RenderGrabLine()
+    {
+        float currentTime = 0;
+        float maxTime = 0.2f;
+        LayerMask mask = LayerMask.GetMask("LaserHit");
+        grabLine.gameObject.SetActive(true);
+        grabLine.SetPosition(0, Vector3.zero);
+
+        while (currentTime < maxTime)
+        { 
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, mask))
+            {
+                grabLine.SetPosition(1, Vector3.forward * hit.distance);
+            }
+            currentTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        grabLine.gameObject.SetActive(false);
     }
 
     void TryMove(int newRow, int newCol)
     {
         keyDown = true;
+        audioSource.clip = walkClip;
+        audioSource.Play();
+
         if (!gridController.IsValidPosition(newRow, newCol)) return;
         if (gridController.GetPositionValue(newRow, newCol) != GridValue.Space) return;
 
@@ -121,5 +134,6 @@ public class M2PlayerController : MonoBehaviour
 
         playerRow = newRow;
         playerCol = newCol;
+
     }
 }

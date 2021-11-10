@@ -7,6 +7,7 @@ public class GridSpaceController : MonoBehaviour
     public Material emptyMaterial;
     public Material destinationMaterial;
     public Material fullMaterial;
+    public GameObject particles;
 
     GridValue gridValue;
 
@@ -30,5 +31,15 @@ public class GridSpaceController : MonoBehaviour
     public GridValue GetValue()
     {
         return gridValue;
+    }
+
+    public void StartParticles()
+    {
+        particles.SetActive(true);
+    }
+
+    public void StopParticles()
+    {
+        particles.SetActive(false);
     }
 }

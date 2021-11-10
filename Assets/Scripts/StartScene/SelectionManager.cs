@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SelectionManager : MonoBehaviour
 {
-    static int numMinigames = 2;
-    public static bool[] finishedMinigames;
+    static int numMinigames = 3;
+    static bool[] finishedMinigames;
     static int[] minigameScores;
 
     public GameObject[] checkUI_game= new GameObject[3];

@@ -11,22 +11,14 @@ public class M2GameManager : GameManager
 
     public M2PlayerController playerController;
 
-    //float numTotal = 0;
-
     public override void StartOtherGameObjects()
     {
         playerController.AllowMovement();
     }
 
-    public void AddTotal()
+    public override void UpdateScoreText()
     {
-        currentScore++;
-        UpdateText();
-    }
-
-    void UpdateText()
-    {
-        totalText.text = $"# Boxes Delivered: {currentScore}";
+        totalText.text = $"Boxes Delivered: {currentScore} / {maxScore}";
     }
 
     public override void DoOnWin()
@@ -44,4 +36,6 @@ public class M2GameManager : GameManager
         Time.timeScale = 1;
         SceneManager.LoadScene("Selection");
     }
+
+    
 }

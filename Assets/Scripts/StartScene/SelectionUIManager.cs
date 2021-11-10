@@ -11,15 +11,22 @@ public class SelectionUIManager : MonoBehaviour
     public ScoringController[] scorings;
 
     SelectionManager selectionManager;
+    PlayerSelectionController playerSelection;
 
     void Start()
     {
         selectionManager = GameObject.Find("SelectionManager").GetComponent<SelectionManager>();
+       
+        
         int numMinigames = selectionManager.GetNumMinigames();
-
+        List<GameObject> buttons = new List<GameObject>();
         for (int i = 0; i < minigameButtons.Length; i++)
         {
             minigameButtons[i].interactable = i < numMinigames;
+            if (i < numMinigames)
+            {
+                buttons.Add(minigameButtons[i].gameObject);
+            }
         }
 
         for (int i = 0; i < scorings.Length; i++)
@@ -28,6 +35,13 @@ public class SelectionUIManager : MonoBehaviour
         }
 
         continueButton.SetActive(selectionManager.AllMinigamesCompleted());
+        if (selectionManager.AllMinigamesCompleted())
+        {
+            buttons.Add(continueButton);
+        }
+
+        playerSelection = GameObject.Find("PlayerSelection").GetComponent<PlayerSelectionController>();
+        playerSelection.SetButtons(buttons);
     }
 
 }

@@ -39,7 +39,7 @@ public class CategoryBox : MonoBehaviour
         {
             SetPapersMaterial(correctMaterial);
             correctParticles.SetActive(true);
-            gameManager.AddCorrect();
+            gameManager.AddToScore();
 
             audioSource.clip = correctClip;
             audioSource.Play();
@@ -50,7 +50,6 @@ public class CategoryBox : MonoBehaviour
         {
             SetPapersMaterial(incorrectMaterial);
             incorrectParticles.SetActive(true);
-            gameManager.AddIncorrect();
 
             audioSource.clip = incorrectClip;
             audioSource.Play();
