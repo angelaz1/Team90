@@ -9,6 +9,9 @@ public class ScreenController : MonoBehaviour
     public ActionsController screenActionsController;
     public ActionsController playerActionsController;
 
+    public GameObject player1;
+    public GameObject player2;
+
     public float inBetweenWaitTime = 0.5f;
     public float afterWaitTime = 2f;
 
@@ -41,7 +44,7 @@ public class ScreenController : MonoBehaviour
 
     void StartListening()
     {
-        Camera.main.gameObject.GetComponent<Animator>().SetBool("IsZoomed", false);
+        SetAnimatorsToFaceScreen(false);
         screenActionsController.HideActions();
         acceptingInput = true;
     }
@@ -64,7 +67,7 @@ public class ScreenController : MonoBehaviour
 
     void DisplayGreeting()
     {
-        Camera.main.gameObject.GetComponent<Animator>().SetBool("IsZoomed", true);
+        SetAnimatorsToFaceScreen(true);
         screenActionsController.DisplayActionsSequentially(currentGreeting, inBetweenWaitTime);
         playerActionsController.HideActions();
         playerActionsController.SetPlaceholders(currentGreeting.Count);
@@ -107,16 +110,21 @@ public class ScreenController : MonoBehaviour
         }
         else
         {
-            // Incorrect!
             acceptingInput = false;
             playerActionsController.ShowIncorrectAction(act);
-            Invoke(nameof(DisplayGreeting), 0.2f);
+
+            // TODO: Incorrect animations + sounds
+
+            Invoke(nameof(DisplayGreeting), 1f);
         }
 
         if (currentActions.Count == 0)
         {
             acceptingInput = false;
-            Invoke(nameof(GreetingCompleted), 0.2f);
+
+            // TODO: Success animations + sounds
+
+            Invoke(nameof(GreetingCompleted), 1f);
         }
     }
 
@@ -124,5 +132,12 @@ public class ScreenController : MonoBehaviour
     {
         gameManager.AddToScore();
         CreateGreeting();
+    }
+
+    void SetAnimatorsToFaceScreen(bool value)
+    {
+        Camera.main.gameObject.GetComponent<Animator>().SetBool("IsZoomed", value);
+        player1.GetComponent<Animator>().SetBool("IsFacingScreen", value);
+        player2.GetComponent<Animator>().SetBool("IsFacingScreen", value);
     }
 }

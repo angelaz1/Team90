@@ -68,6 +68,8 @@ public class ActionsController : MonoBehaviour
 
     IEnumerator DisplayActionsSeq(List<Action> newActions, float waitTime)
     {
+        yield return new WaitForSeconds(1f);
+        
         GameObject actionObj;
 
         for (int i = 0; i < actions.Count; i++)
