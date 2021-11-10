@@ -56,9 +56,15 @@ public class ScreenController : MonoBehaviour
 
         for (int i = 0; i < currNumSteps; i++)
         {
-            Action randDir = (Action)Random.Range(0, 6);
-            currentActions.Add(randDir);
-            currentGreeting.Add(randDir);
+            // Balance actions between two players
+            int player = Random.Range(0, 2);
+
+            Action randAction;
+            if (player == 0) randAction = (Action)Random.Range(0, 4);
+            else randAction = (Action)Random.Range(4, 6);
+
+            currentActions.Add(randAction);
+            currentGreeting.Add(randAction);
         }
 
         DisplayGreeting();
