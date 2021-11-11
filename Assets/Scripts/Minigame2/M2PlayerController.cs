@@ -97,7 +97,7 @@ public class M2PlayerController : MonoBehaviour
     IEnumerator RenderGrabLine()
     {
         float currentTime = 0;
-        float maxTime = 0.2f;
+        float maxTime = 0.3f;
         LayerMask mask = LayerMask.GetMask("LaserHit");
         grabLine.gameObject.SetActive(true);
         grabLine.SetPosition(0, Vector3.zero);
