@@ -3015,27 +3015,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1192455938622701908, guid: fa83b219623e7e146b8afab037e7484d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1192455938680581768, guid: fa83b219623e7e146b8afab037e7484d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1192455939759158947, guid: fa83b219623e7e146b8afab037e7484d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3335363866854865292, guid: fa83b219623e7e146b8afab037e7484d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6299734889049077102, guid: fa83b219623e7e146b8afab037e7484d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8587976712540939099, guid: fa83b219623e7e146b8afab037e7484d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8596543281322185096, guid: fa83b219623e7e146b8afab037e7484d, type: 3}
       propertyPath: m_Pivot.x

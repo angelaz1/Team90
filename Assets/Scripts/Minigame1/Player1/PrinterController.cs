@@ -28,6 +28,8 @@ public class PrinterController : MonoBehaviour
     int maxSteps = 6;
     int currMaxSteps;
 
+    public int numPapersToPass;
+
     [Header("Printer SFX")]
     public AudioClip paperComeOutClip;
     public AudioClip printerBrokenClip;
@@ -169,7 +171,10 @@ public class PrinterController : MonoBehaviour
         paperSpawned = false;
 
         // Pass paper to player 2
-        papersController.SpawnPaper();
+        for (int i = 0; i < numPapersToPass; i++)
+        {
+            papersController.SpawnPaper();
+        }
 
         // Update actions display
         actionsController.HideActions();

@@ -105,7 +105,6 @@ public class ScreenController : MonoBehaviour
         if (currentActions.Count == 0) return;
 
         keyDown = true;
-        Debug.Log(currentActions[0]);
 
         if (currentActions[0] == act)
         {

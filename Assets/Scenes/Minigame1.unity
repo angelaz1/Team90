@@ -631,7 +631,7 @@ MonoBehaviour:
   tutorialPanel: {fileID: 1190628317}
   countdownPanel: {fileID: 251151949}
   countdownText: {fileID: 251151948}
-  maxScore: 8
+  maxScore: 24
   scoring: {fileID: 389002282}
   refereeClip: {fileID: 8300000, guid: 826d734faa10e23439a4fb123ba94e02, type: 3}
   winClip: {fileID: 8300000, guid: e767a07ada83f4641aaa403a3b33bcfb, type: 3}
@@ -3946,6 +3946,10 @@ PrefabInstance:
     - target: {fileID: 1457439438, guid: 8c836d874988f6d45ac112a48011e9d3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 222393939347015829, guid: 8c836d874988f6d45ac112a48011e9d3, type: 3}
+      propertyPath: numPapersToPass
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 222393939347015829, guid: 8c836d874988f6d45ac112a48011e9d3, type: 3}
       propertyPath: papersController
