@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Glowing_correcr_materiral
+  m_Name: Glowing_correct_materirat
   m_Shader: {fileID: -6465566751694194690, guid: ebfcc867ba708fb4594e863018a25d7b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -32,10 +32,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_49ca2f0206034a0c832db2f3a63ef44a: 0.703
-    - Vector1_b67a1038305e4328957f848be80feb04: 0.195
+    - Vector1_49ca2f0206034a0c832db2f3a63ef44a: 0
+    - Vector1_b67a1038305e4328957f848be80feb04: 0.004
     m_Colors:
     - Color_7d15cfdec00543eca8b65a4399cb1dfe: {r: 1, g: 1, b: 1, a: 1}
-    - Color_bb8849cb857948c1a4fbeea3f7fa6c11: {r: 0.52625537, g: 3.4557621, b: 0, a: 0.3921569}
-    - Color_e00af463d0764e9dad52eb3eedbab15a: {r: 0.9811321, g: 0.9811321, b: 0.9811321, a: 1}
+    - Color_bb8849cb857948c1a4fbeea3f7fa6c11: {r: 0.8396226, g: 0.65889055, b: 0.40748978, a: 0.40784314}
+    - Color_e00af463d0764e9dad52eb3eedbab15a: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
