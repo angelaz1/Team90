@@ -13,6 +13,7 @@ public class PrinterController : MonoBehaviour
 
     public DirActionsController actionsController;
     public PapersController papersController;
+    public M1SquirrelController squirrelController;
 
     List<Direction> currentActions = new List<Direction>(); // List of directions that need to be fulfilled to do current action
     List<Direction> passPaperActions = new List<Direction>();
@@ -20,6 +21,7 @@ public class PrinterController : MonoBehaviour
     bool paperSpawned = false;
     bool printerBroken = false;
     bool keyDown = false;
+    bool gameFinished = false;
 
     const int startingBreakThreshold = 20;
     int currentMinBreakThreshold;
@@ -53,7 +55,7 @@ public class PrinterController : MonoBehaviour
 
     IEnumerator SpawnPapers()
     {
-        while (true)
+        while (!gameFinished)
         {
             yield return new WaitForSeconds(Random.Range(spawnTimeMin, spawnTimeMax));
             int rng = Random.Range(0, startingBreakThreshold + 1); 
@@ -94,6 +96,7 @@ public class PrinterController : MonoBehaviour
     void BreakPrinter()
     {
         printerBroken = true;
+        squirrelController.BeginTapping();
 
         int numActions = Random.Range(minSteps, currMaxSteps);
         for (int i = 0; i < numActions; i++)
@@ -116,21 +119,19 @@ public class PrinterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (paperSpawned || printerBroken)
+        if (!gameFinished)
         {
-            if (!keyDown)
+            if (paperSpawned || printerBroken)
             {
-                if (Input.GetAxis("Vertical") > 0) HandleAction(Direction.Up);
-                else if (Input.GetAxis("Horizontal") < 0) HandleAction(Direction.Left);
-                else if (Input.GetAxis("Vertical") < 0) HandleAction(Direction.Down);
-                else if (Input.GetAxis("Horizontal") > 0) HandleAction(Direction.Right);
+                if (!keyDown)
+                {
+                    if (Input.GetAxis("Vertical") > 0) HandleAction(Direction.Up);
+                    else if (Input.GetAxis("Horizontal") < 0) HandleAction(Direction.Left);
+                    else if (Input.GetAxis("Vertical") < 0) HandleAction(Direction.Down);
+                    else if (Input.GetAxis("Horizontal") > 0) HandleAction(Direction.Right);
+                }
+                if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0) keyDown = false;
             }
-            if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0) keyDown = false;
-
-            //if (Input.GetKeyDown(KeyCode.W)) HandleAction(Direction.Up);
-            //else if (Input.GetKeyDown(KeyCode.A)) HandleAction(Direction.Left);
-            //else if (Input.GetKeyDown(KeyCode.S)) HandleAction(Direction.Down);
-            //else if (Input.GetKeyDown(KeyCode.D)) HandleAction(Direction.Right);
         }
     }
 
@@ -150,6 +151,12 @@ public class PrinterController : MonoBehaviour
             actionsController.IncorrectAction();
         }
 
+        if (currentActions.Count == 1 && !printerBroken)
+        {
+            paperObject.SetActive(false);
+            squirrelController.GrabPaper();
+        }
+
         if (currentActions.Count == 0)
         {
             if (printerBroken)
@@ -160,14 +167,14 @@ public class PrinterController : MonoBehaviour
             else
             {
                 // Pass paper
-                Invoke(nameof(PassPaper), 0.2f);
+                squirrelController.PassPaper();
+                Invoke(nameof(PassPaper), 1.5f);
             }
         }
     }
 
     void PassPaper()
     {
-        paperObject.SetActive(false);
         paperSpawned = false;
 
         // Pass paper to player 2
@@ -182,6 +189,7 @@ public class PrinterController : MonoBehaviour
 
     void FixPrinter()
     {
+        squirrelController.StopTapping();
         printerBroken = false;
 
         // Update actions display
@@ -193,5 +201,11 @@ public class PrinterController : MonoBehaviour
         smoke.SetActive(false);
 
         currentMinBreakThreshold = startingBreakThreshold;
+    }
+
+    public void WinGame()
+    {
+        gameFinished = true;
+        squirrelController.Success();
     }
 }

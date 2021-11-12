@@ -8,7 +8,7 @@ public class PapersController : MonoBehaviour
     public CategoryBox animalBox;
     public CategoryBox humanBox;
 
-    public GameObject pikachu;
+    public M1PikachuController pikachuController;
 
     public GameObject currentPaperPosition;
     public GameObject otherPaperPosition;
@@ -17,6 +17,7 @@ public class PapersController : MonoBehaviour
     string subjectsFilePath = "Subjects";
     Subject[] subjects;
     bool onCooldown = false;
+    bool gameFinished = false;
 
     void Start()
     {
@@ -48,25 +49,26 @@ public class PapersController : MonoBehaviour
 
     private void Update()
     {
-        if (papers.Count > 0 && !onCooldown)
+        if (!gameFinished)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (papers.Count > 0 && !onCooldown)
             {
-                bool success = animalBox.ReceivePaper(papers[0]);
-                if (success)
+                if (Input.GetKeyDown(KeyCode.F))
                 {
-                    pikachu.GetComponent<Animator>().SetTrigger("CorrectCategory");
+                    pikachuController.PassPaperLeft();
+                    bool success = animalBox.ReceivePaper(papers[0]);
+                    pikachuController.SetPassCorrectness(success);
+
+                    StartCoroutine(ShufflePagePositions());
                 }
-                StartCoroutine(ShufflePagePositions());
-            }
-            else if (Input.GetKeyDown(KeyCode.G))
-            {
-                bool success = humanBox.ReceivePaper(papers[0]);
-                if (success)
+                else if (Input.GetKeyDown(KeyCode.G))
                 {
-                    pikachu.GetComponent<Animator>().SetTrigger("CorrectCategory");
+                    pikachuController.PassPaperRight();
+                    bool success = humanBox.ReceivePaper(papers[0]);
+                    pikachuController.SetPassCorrectness(success);
+
+                    StartCoroutine(ShufflePagePositions());
                 }
-                StartCoroutine(ShufflePagePositions());
             }
         }
     }
@@ -91,6 +93,7 @@ public class PapersController : MonoBehaviour
 
     public void WinGame()
     {
-        pikachu.GetComponent<Animator>().SetTrigger("Win");
+        gameFinished = true;
+        pikachuController.Success();
     }
 }
