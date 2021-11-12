@@ -18,7 +18,6 @@ public abstract class GameManager : MonoBehaviour
     [Header("Scoring")]
     public int maxScore = 8;
     protected int currentScore = 0;
-    public ScoringController scoring;
 
     [Header("SFX")]
     public AudioClip refereeClip;
@@ -80,9 +79,7 @@ public abstract class GameManager : MonoBehaviour
 
     void EndGame()
     {
-        Time.timeScale = 0;
         winScreen.SetActive(true);
-        scoring.SetScore(ComputeScore());
         
         audioSource.clip = winClip;
         audioSource.Play();
@@ -91,15 +88,6 @@ public abstract class GameManager : MonoBehaviour
     }
 
     public abstract void DoOnWin();
-
-    public int ComputeScore()
-    {
-        if (currentScore < maxScore / 5) return 1;
-        if (currentScore < 2 * maxScore / 5) return 2;
-        if (currentScore < 3 * maxScore / 5) return 3;
-        if (currentScore < 4 * maxScore / 5) return 4;
-        return 5;
-    }
 
     public abstract void ExitToMain();
 }

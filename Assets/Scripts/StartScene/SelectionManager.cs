@@ -6,7 +6,6 @@ public class SelectionManager : MonoBehaviour
 {
     static int numMinigames = 3;
     public static bool[] finishedMinigames;
-    static int[] minigameScores;
 
   //  public GameObject[] checkUI_game;
   
@@ -26,7 +25,6 @@ public class SelectionManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject);
             finishedMinigames = new bool[numMinigames];
-            minigameScores = new int[numMinigames];
         }
     }
 
@@ -47,17 +45,16 @@ public class SelectionManager : MonoBehaviour
         return true;
     }
 
-    public int GetScore(int index)
-    {
-        if (index >= numMinigames) return 0;
-        return minigameScores[index];
-    }
+    //public int GetScore(int index)
+    //{
+    //    if (index >= numMinigames) return 0;
+    //    return minigameScores[index];
+    //}
     
 
-    public void FinishMinigame(int index, int score)
+    public void FinishMinigame(int index)
     {
         finishedMinigames[index] = true;
-        minigameScores[index] = Mathf.Max(minigameScores[index], score);
      //   checkUI_game[index].SetActive(true);
     }
     

@@ -31,7 +31,7 @@ public class M3GameManager : GameManager
         GameObject sManagerObj = GameObject.Find("SelectionManager");
         if (sManagerObj)
         {
-            sManagerObj.GetComponent<SelectionManager>().FinishMinigame(2, ComputeScore());
+            sManagerObj.GetComponent<SelectionManager>().FinishMinigame(2);
         }
         Time.timeScale = 1;
         SceneManager.LoadScene("Selection");

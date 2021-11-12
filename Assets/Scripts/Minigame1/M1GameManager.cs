@@ -26,6 +26,7 @@ public class M1GameManager : GameManager
     public override void DoOnWin()
     {
         papersController.WinGame();
+        printerController.WinGame();
     }
 
     public override void ExitToMain()
@@ -33,7 +34,7 @@ public class M1GameManager : GameManager
         GameObject sManagerObj = GameObject.Find("SelectionManager");
         if (sManagerObj)
         {
-            sManagerObj.GetComponent<SelectionManager>().FinishMinigame(0, ComputeScore());
+            sManagerObj.GetComponent<SelectionManager>().FinishMinigame(0);
         }
         Time.timeScale = 1;
         SceneManager.LoadScene("Selection");
