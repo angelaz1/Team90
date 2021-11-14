@@ -84,9 +84,9 @@ public class PapersController : MonoBehaviour
         onCooldown = true;
         Invoke(nameof(StopCooldown), 0.1f);
         if (papers.Count > 0) papers[0].GetComponent<Paper>().MoveToPosition(currentPaperPosition.transform.position);
+        yield return new WaitForSeconds(0.5f);
         if (papers.Count > 1)
         {
-            yield return new WaitForSeconds(0.5f);
             papers[1].SetActive(true);
         } 
     }
