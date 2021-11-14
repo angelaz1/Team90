@@ -12,13 +12,20 @@ public class M2PlayerController : MonoBehaviour
 
     bool keyDown;
 
-    bool gameStarted = false;
+    bool canMove = false;
 
+    public Animator squirrelAnimator;
+    public Animator pikachuAnimator;
     public LineRenderer grabLine;
 
     [Header("SFX")]
     public AudioClip walkClip;
     AudioSource audioSource;
+
+    Vector3 currentPosition;
+    Vector3 targetPosition;
+    float currentTime;
+    bool isMoving = false;
 
     void Start()
     {
@@ -31,12 +38,25 @@ public class M2PlayerController : MonoBehaviour
 
     public void AllowMovement()
     {
-        gameStarted = true;
+        canMove = true;
     }
 
     void Update()
     {
-        if (!gameStarted) return;
+        if (isMoving)
+        {
+            transform.position = Vector3.Lerp(currentPosition, targetPosition, currentTime);
+            currentTime += 3 * Time.deltaTime;
+
+            if (currentTime >= 1)
+            {
+                squirrelAnimator.SetBool("IsWalking", false);
+                transform.position = targetPosition;
+                isMoving = false;
+            }
+        }
+
+        if (!canMove) return;
         
         if (!keyDown)
         {
@@ -70,11 +90,12 @@ public class M2PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
+            pikachuAnimator.SetTrigger("HitLeft");
+
             // Check for box
             if (gridController.HasBoxInView(playerRow, playerCol, playerDirection))
             {
                 //Pull box
-                Debug.Log("Pull Box");
                 gridController.PullBox(playerDirection);
             }
 
@@ -82,11 +103,12 @@ public class M2PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.G))
         {
+            pikachuAnimator.SetTrigger("HitRight");
+
             // Check for box
             if (gridController.HasBoxInView(playerRow, playerCol, playerDirection))
             {
                 //Push box
-                Debug.Log("Push Box");
                 gridController.PushBox(playerDirection);
             }
 
@@ -130,10 +152,21 @@ public class M2PlayerController : MonoBehaviour
 
         Vector3 gridPos = gridController.GetPosition(newRow, newCol);
         gridPos.y = transform.position.y;
-        transform.position = gridPos;
+
+        squirrelAnimator.SetBool("IsWalking", true);
+        targetPosition = gridPos;
+        currentPosition = transform.position;
+        currentTime = 0;
+        isMoving = true;
 
         playerRow = newRow;
         playerCol = newCol;
+    }
 
+    public void EndGame()
+    {
+        canMove = false;
+        squirrelAnimator.SetTrigger("Win");
+        pikachuAnimator.SetTrigger("Win");
     }
 }

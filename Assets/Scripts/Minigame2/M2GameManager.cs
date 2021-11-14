@@ -23,7 +23,7 @@ public class M2GameManager : GameManager
 
     public override void DoOnWin()
     {
-        return;
+        playerController.EndGame();
     }
 
     public override void ExitToMain()
