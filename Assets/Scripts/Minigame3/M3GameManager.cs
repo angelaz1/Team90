@@ -27,7 +27,7 @@ public class M3GameManager : GameManager
 
     public override void DoOnWin()
     {
-        //papersController.WinGame();
+        screenController.WinGame();
     }
 
     public override void ExitToMain()

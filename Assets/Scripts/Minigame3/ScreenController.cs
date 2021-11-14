@@ -15,6 +15,9 @@ public class ScreenController : MonoBehaviour
     public float inBetweenWaitTime = 0.5f;
     public float afterWaitTime = 2f;
 
+    public M3SquirrelController squirrelController;
+    public M3PikachuController pikachuController;
+
     int currNumSteps = 3;
     List<Action> currentActions;
     List<Action> currentGreeting;
@@ -111,6 +114,8 @@ public class ScreenController : MonoBehaviour
             currentActions.RemoveAt(0);
 
             // Display correct action
+            if (act != Action.F && act != Action.G) squirrelController.Pose();
+            else pikachuController.Pose();
             playerActionsController.ShowCorrectAction(act);
         }
         else
@@ -118,8 +123,9 @@ public class ScreenController : MonoBehaviour
             acceptingInput = false;
             playerActionsController.ShowIncorrectAction(act);
 
-            // TODO: Incorrect animations + sounds
-
+            // Incorrect animations + sounds
+            squirrelController.IncorrectPoses();
+            pikachuController.IncorrectPoses();
             Invoke(nameof(DisplayGreeting), 1f);
         }
 
@@ -127,8 +133,9 @@ public class ScreenController : MonoBehaviour
         {
             acceptingInput = false;
 
-            // TODO: Success animations + sounds
-
+            // Correct animations + sounds
+            squirrelController.CorrectPoses();
+            pikachuController.CorrectPoses();
             Invoke(nameof(GreetingCompleted), 1f);
         }
     }
@@ -144,5 +151,11 @@ public class ScreenController : MonoBehaviour
         Camera.main.gameObject.GetComponent<Animator>().SetBool("IsZoomed", value);
         player1.GetComponent<Animator>().SetBool("IsFacingScreen", value);
         player2.GetComponent<Animator>().SetBool("IsFacingScreen", value);
+    }
+
+    public void WinGame()
+    {
+        squirrelController.Success();
+        pikachuController.Success();
     }
 }

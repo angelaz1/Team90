@@ -54,7 +54,7 @@ public class ActionsController : MonoBehaviour
 
     public void DisplayActionsSequentially(List<Action> actions, float waitTime)
     {
-        SetPlaceholders(actions.Count);
+        //SetPlaceholders(actions.Count);
         StartCoroutine(DisplayActionsSeq(actions, waitTime));
     }
 
