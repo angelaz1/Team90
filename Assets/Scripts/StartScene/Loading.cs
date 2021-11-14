@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class Loading : MonoBehaviour
 {
     public GameObject IMG_Loading;
     public Slider slider;
-    public Text progressText;
+    public TMP_Text progressText;
     public float playerValue = 0f;
     public string sceneName;
 
