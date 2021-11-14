@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 91e190f4c7d98bf41ab72b4abfedae21, type: 2}
+  - {fileID: 2100000, guid: 56848c6c01a80d847bb4a73cf287f1ac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,9 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d26bc19ce70b540ba5d9b465782e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emptyMaterial: {fileID: 2100000, guid: 91e190f4c7d98bf41ab72b4abfedae21, type: 2}
-  destinationMaterial: {fileID: 2100000, guid: caf805738c10c1e48a980f7aa65d96f2, type: 2}
-  fullMaterial: {fileID: 2100000, guid: 655fc47d77f74e749a262d7c1ea49698, type: 2}
+  emptyMaterial: {fileID: 2100000, guid: 56848c6c01a80d847bb4a73cf287f1ac, type: 2}
+  destinationMaterial: {fileID: 2100000, guid: 8f10a9d26ca9fc84fa70181a6b28fa9f, type: 2}
+  fullMaterial: {fileID: 2100000, guid: cc1b397636d762043a4d0df07b3ed011, type: 2}
   particles: {fileID: 6545624589385165008}
 --- !u!1 &6545624589385165008
 GameObject:
