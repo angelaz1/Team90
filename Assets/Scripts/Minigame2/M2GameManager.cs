@@ -10,6 +10,12 @@ public class M2GameManager : GameManager
     public TextMeshProUGUI totalText;
 
     public M2PlayerController playerController;
+    public M2CameraMovement cameraMovement;
+
+    public override void StopShowingTutorial()
+    {
+        cameraMovement.MoveCamera();
+    }
 
     public override void StartOtherGameObjects()
     {

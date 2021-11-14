@@ -13,6 +13,10 @@ public class M1GameManager : GameManager
     public PrinterController printerController;
     public PapersController papersController;
 
+    public override void StopShowingTutorial()
+    {
+    }
+
     public override void StartOtherGameObjects()
     {
         printerController.StartSpawningPapers();
