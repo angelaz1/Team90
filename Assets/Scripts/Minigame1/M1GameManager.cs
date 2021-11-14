@@ -13,6 +13,13 @@ public class M1GameManager : GameManager
     public PrinterController printerController;
     public PapersController papersController;
 
+    public Animator cameraAnimator;
+
+    public override void StopShowingTutorial()
+    {
+        cameraAnimator.SetTrigger("MoveCam");
+    }
+
     public override void StartOtherGameObjects()
     {
         printerController.StartSpawningPapers();

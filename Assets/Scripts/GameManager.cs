@@ -40,6 +40,7 @@ public abstract class GameManager : MonoBehaviour
         tutorialPanel.SetActive(true);
         yield return new WaitForSeconds(4f);
         tutorialPanel.SetActive(false);
+        StopShowingTutorial();
 
         // Start countdown
         countdownPanel.SetActive(true);
@@ -62,6 +63,8 @@ public abstract class GameManager : MonoBehaviour
 
         StartOtherGameObjects();
     }
+
+    public abstract void StopShowingTutorial();
 
     public abstract void StartOtherGameObjects();
 

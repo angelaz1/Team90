@@ -11,6 +11,10 @@ public class M3GameManager : GameManager
 
     public ScreenController screenController;
 
+    public override void StopShowingTutorial()
+    {
+    }
+
     public override void StartOtherGameObjects()
     {
         screenController.StartCreatingGreetings();
