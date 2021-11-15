@@ -33,15 +33,12 @@ public class ChangePreStory : MonoBehaviour
         if (isPlayerStarted == true && VideoPlayer.isPlaying == false)
         {
             // Wehen the player stopped playing, hide it
-            VideoPlayer.gameObject.SetActive(false);
-            LoadScene();
+          //  VideoPlayer.gameObject.SetActive(false);
+            SceneManager.LoadScene("Selection");
         }
 
     }
 
-    public void LoadScene()
-    {
-        SceneManager.LoadScene("Selection");
-    }
+  
 
 }
