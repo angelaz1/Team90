@@ -11,9 +11,23 @@ public class M3SquirrelController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void Pose()
+    public void Pose(Action act)
     {
-        anim.SetTrigger("Pose");
+        switch (act)
+        {
+            case Action.Up:
+                anim.SetTrigger("PoseUp");
+                break;
+            case Action.Down:
+                anim.SetTrigger("PoseDown");
+                break;
+            case Action.Left:
+                anim.SetTrigger("PoseLeft");
+                break;
+            case Action.Right:
+                anim.SetTrigger("PoseRight");
+                break;
+        }
     }
 
     public void CorrectPoses()

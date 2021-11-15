@@ -141,7 +141,7 @@ public class ScreenController : MonoBehaviour
             // Display correct action
             if (currentActions.Count != 0)
             { 
-                if (act != Action.F && act != Action.G) squirrelController.Pose();
+                if (act != Action.F && act != Action.G) squirrelController.Pose(act);
                 else pikachuController.Pose();
             }
 
