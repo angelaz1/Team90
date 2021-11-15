@@ -33,11 +33,17 @@ public class ScreenController : MonoBehaviour
 
     M3GameManager gameManager;
 
+    [Header("SFX")]
+    public AudioClip correctClip;
+    public AudioClip incorrectClip;
+    AudioSource audioSource;
+
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<M3GameManager>();
         currentActions = new List<Action>();
         currentGreeting = new List<Action>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void StartCreatingGreetings()
@@ -151,6 +157,9 @@ public class ScreenController : MonoBehaviour
             pikachuController.IncorrectPoses();
             bossController.MakeBossAngry();
 
+            audioSource.clip = incorrectClip;
+            audioSource.Play();
+
             Invoke(nameof(DisplayGreeting), 2f);
         }
 
@@ -162,6 +171,9 @@ public class ScreenController : MonoBehaviour
             squirrelController.CorrectPoses();
             pikachuController.CorrectPoses();
             bossController.MakeBossHappy();
+
+            audioSource.clip = correctClip;
+            audioSource.Play();
 
             Invoke(nameof(GreetingCompleted), 3f);
         }
