@@ -7,9 +7,6 @@ public class SelectionManager : MonoBehaviour
     static int numMinigames = 3;
     public static bool[] finishedMinigames;
 
-  //  public GameObject[] checkUI_game;
-  
-
     private static SelectionManager _instance;
 
     public static SelectionManager Instance { get { return _instance; } }
@@ -32,10 +29,12 @@ public class SelectionManager : MonoBehaviour
     {
         return numMinigames;
     }
+
     public bool GetFinishedMinigames(int index)
     {
         return finishedMinigames[index];
     }
+
     public bool AllMinigamesCompleted()
     {
         foreach (bool finished in finishedMinigames)
@@ -45,19 +44,9 @@ public class SelectionManager : MonoBehaviour
         return true;
     }
 
-    //public int GetScore(int index)
-    //{
-    //    if (index >= numMinigames) return 0;
-    //    return minigameScores[index];
-    //}
-    
-
     public void FinishMinigame(int index)
     {
         finishedMinigames[index] = true;
-     //   checkUI_game[index].SetActive(true);
+        Debug.Log($"finished {index} "+finishedMinigames);
     }
-    
-
-    
 }

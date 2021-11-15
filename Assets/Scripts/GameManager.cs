@@ -92,10 +92,16 @@ public abstract class GameManager : MonoBehaviour
         audioSource.clip = winClip;
         audioSource.Play();
 
+        GameObject sManagerObj = GameObject.Find("SelectionManager");
+        if (sManagerObj)
+        {
+            sManagerObj.GetComponent<SelectionManager>().FinishMinigame(GetGameIndex());
+        }
+
         DoOnWin();
     }
 
     public abstract void DoOnWin();
 
-    public abstract void ExitToMain();
+    public abstract int GetGameIndex();
 }

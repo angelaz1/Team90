@@ -32,14 +32,8 @@ public class M3GameManager : GameManager
         screenController.WinGame();
     }
 
-    public override void ExitToMain()
+    public override int GetGameIndex()
     {
-        GameObject sManagerObj = GameObject.Find("SelectionManager");
-        if (sManagerObj)
-        {
-            sManagerObj.GetComponent<SelectionManager>().FinishMinigame(2);
-        }
-        Time.timeScale = 1;
-        SceneManager.LoadScene("Selection");
+        return 2;
     }
 }

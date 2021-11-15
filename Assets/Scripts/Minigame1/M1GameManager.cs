@@ -36,14 +36,8 @@ public class M1GameManager : GameManager
         printerController.WinGame();
     }
 
-    public override void ExitToMain()
+    public override int GetGameIndex()
     {
-        GameObject sManagerObj = GameObject.Find("SelectionManager");
-        if (sManagerObj)
-        {
-            sManagerObj.GetComponent<SelectionManager>().FinishMinigame(0);
-        }
-        Time.timeScale = 1;
-        SceneManager.LoadScene("Selection");
+        return 0;
     }
 }

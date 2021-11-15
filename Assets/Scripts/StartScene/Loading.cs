@@ -37,7 +37,6 @@ public class Loading : MonoBehaviour
                 p1Cooldown = false;
             }
 
-            Debug.Log("playerValue = " + playerValue);
             slider.value = playerValue / 100;
             progressText.text = playerValue + "%";
 

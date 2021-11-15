@@ -32,17 +32,8 @@ public class M2GameManager : GameManager
         playerController.EndGame();
     }
 
-    public override void ExitToMain()
+    public override int GetGameIndex()
     {
-        GameObject sManagerObj = GameObject.Find("SelectionManager");
-        if (sManagerObj)
-        {
-             sManagerObj.GetComponent<SelectionManager>().FinishMinigame(1);
-           // sManagerObj.GetComponent<SelectionManager>().CheckFinishMinigame(1);
-        }
-        Time.timeScale = 1;
-        SceneManager.LoadScene("Selection");
+        return 1;
     }
-
-    
 }
