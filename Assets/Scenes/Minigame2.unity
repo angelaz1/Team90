@@ -7938,7 +7938,7 @@ MonoBehaviour:
   refereeClip: {fileID: 8300000, guid: 826d734faa10e23439a4fb123ba94e02, type: 3}
   winClip: {fileID: 8300000, guid: e767a07ada83f4641aaa403a3b33bcfb, type: 3}
   loseClip: {fileID: 8300000, guid: fc0c4a427ec4f6248b592f7b72fbf87a, type: 3}
-  totalText: {fileID: 272299275}
+  totalText: {fileID: 1593684763}
   playerController: {fileID: 1300895151}
   cameraMovement: {fileID: 503035846}
 --- !u!4 &1800309495

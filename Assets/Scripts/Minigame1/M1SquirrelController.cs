@@ -14,9 +14,11 @@ public class M1SquirrelController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void GrabPaper()
+    public void GrabPaper(Subject newSubject)
     {
         anim.SetTrigger("Grab");
+        paper.GetComponent<Paper>().InitializePaper(newSubject);
+        animatedPaper.GetComponent<Paper>().InitializePaper(newSubject);
     }
 
     public void PassPaper()
