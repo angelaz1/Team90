@@ -1994,6 +1994,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 912274353}
+    - target: {fileID: 5445399442187908649, guid: 6da87711e2c8e514ab9443a209839f7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Minigame3
+      objectReference: {fileID: 0}
     - target: {fileID: 5445399442187908654, guid: 6da87711e2c8e514ab9443a209839f7e, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -2038,6 +2042,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 912274353}
+    - target: {fileID: 5445399442242574333, guid: 6da87711e2c8e514ab9443a209839f7e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Minigame2
+      objectReference: {fileID: 0}
     - target: {fileID: 5445399442507114789, guid: 6da87711e2c8e514ab9443a209839f7e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2136,7 +2144,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: d56020264360ab64592f81dffd8064ca, type: 3}
     - target: {fileID: 5445399443699166406, guid: 6da87711e2c8e514ab9443a209839f7e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5445399443699166407, guid: 6da87711e2c8e514ab9443a209839f7e, type: 3}
       propertyPath: m_LocalScale.x
