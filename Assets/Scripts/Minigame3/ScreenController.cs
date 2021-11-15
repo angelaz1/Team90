@@ -15,6 +15,9 @@ public class ScreenController : MonoBehaviour
     public float inBetweenWaitTime = 0.5f;
     public float afterWaitTime = 2f;
 
+    public GameObject tutorialPanel;
+
+    public BossScreenController bossController;
     public M3SquirrelController squirrelController;
     public M3PikachuController pikachuController;
 
@@ -49,6 +52,8 @@ public class ScreenController : MonoBehaviour
     {
         SetAnimatorsToFaceScreen(false);
         screenActionsController.HideActions();
+
+        tutorialPanel.SetActive(true);
         acceptingInput = true;
     }
 
@@ -76,6 +81,9 @@ public class ScreenController : MonoBehaviour
 
     void DisplayGreeting()
     {
+        tutorialPanel.SetActive(false);
+        bossController.MakeBossOooh();
+
         SetAnimatorsToFaceScreen(true);
         screenActionsController.DisplayActionsSequentially(currentGreeting, inBetweenWaitTime);
         playerActionsController.HideActions();
@@ -114,8 +122,12 @@ public class ScreenController : MonoBehaviour
             currentActions.RemoveAt(0);
 
             // Display correct action
-            if (act != Action.F && act != Action.G) squirrelController.Pose();
-            else pikachuController.Pose();
+            if (currentActions.Count != 0)
+            { 
+                if (act != Action.F && act != Action.G) squirrelController.Pose();
+                else pikachuController.Pose();
+            }
+
             playerActionsController.ShowCorrectAction(act);
         }
         else
@@ -126,7 +138,9 @@ public class ScreenController : MonoBehaviour
             // Incorrect animations + sounds
             squirrelController.IncorrectPoses();
             pikachuController.IncorrectPoses();
-            Invoke(nameof(DisplayGreeting), 1f);
+            bossController.MakeBossAngry();
+
+            Invoke(nameof(DisplayGreeting), 2f);
         }
 
         if (currentActions.Count == 0)
@@ -136,7 +150,9 @@ public class ScreenController : MonoBehaviour
             // Correct animations + sounds
             squirrelController.CorrectPoses();
             pikachuController.CorrectPoses();
-            Invoke(nameof(GreetingCompleted), 1f);
+            bossController.MakeBossHappy();
+
+            Invoke(nameof(GreetingCompleted), 3f);
         }
     }
 
