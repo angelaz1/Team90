@@ -26,7 +26,7 @@ public class FakeGridController : MonoBehaviour
             for (int c = 0; c < width; c++)
             {
                 GameObject gridSpace = Instantiate(gridPrefab, transform);
-                gridSpace.transform.position = bottomLeft.transform.position + (new Vector3(c * gridSpacing, 0, r * gridSpacing));
+                gridSpace.transform.localPosition = bottomLeft.transform.localPosition + (new Vector3(c * gridSpacing, 0, r * gridSpacing));
                 grid[r, c] = gridSpace.GetComponent<GridSpaceController>();
             }
         }

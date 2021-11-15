@@ -47,6 +47,5 @@ public class SelectionManager : MonoBehaviour
     public void FinishMinigame(int index)
     {
         finishedMinigames[index] = true;
-        Debug.Log($"finished {index} "+finishedMinigames);
     }
 }
