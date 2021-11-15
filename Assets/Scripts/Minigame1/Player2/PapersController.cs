@@ -15,14 +15,17 @@ public class PapersController : MonoBehaviour
 
     List<GameObject> papers = new List<GameObject>(); // Current paper is the one in index 0
     string subjectsFilePath = "Subjects";
-    Subject[] subjects;
+    Subject[] animals;
+    Subject[] humans;
     bool onCooldown = false;
     bool gameFinished = false;
 
     void Start()
     {
         TextAsset subjectsTextAsset = Resources.Load<TextAsset>(subjectsFilePath);
-        subjects = JsonUtility.FromJson<Subjects>(subjectsTextAsset.text).subjects;
+        Subjects subjects = JsonUtility.FromJson<Subjects>(subjectsTextAsset.text);
+        animals = subjects.animals;
+        humans = subjects.humans;
 
         //StartCoroutine(SpawnPapers()); // DEBUG to spawn papers in for testing
     }
@@ -38,9 +41,18 @@ public class PapersController : MonoBehaviour
 
     public void SpawnPaper()
     {
-        int index = Random.Range(0, subjects.Length);
+        Subject newSubject;
+        if (Random.Range(0, 2) == 0)
+        {
+            newSubject = humans[Random.Range(0, humans.Length)];
+        }
+        else
+        {
+            newSubject = animals[Random.Range(0, animals.Length)];
+        }
+
         GameObject newPaper = Instantiate(paperPrefab, otherPaperPosition.transform.position, Quaternion.identity, transform);
-        newPaper.GetComponent<Paper>().InitializePaper(subjects[index]);
+        newPaper.GetComponent<Paper>().InitializePaper(newSubject);
         newPaper.transform.localRotation = Quaternion.identity;
         if (papers.Count == 0) newPaper.GetComponent<Paper>().MoveToPosition(currentPaperPosition.transform.position);
         if (papers.Count > 1) newPaper.SetActive(false);

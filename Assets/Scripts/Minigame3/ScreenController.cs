@@ -28,6 +28,9 @@ public class ScreenController : MonoBehaviour
     bool keyDown = false;
     bool acceptingInput = false;
 
+    int chooseRange = 10;
+    int balanceAmount = 5;
+
     M3GameManager gameManager;
 
     void Start()
@@ -65,11 +68,19 @@ public class ScreenController : MonoBehaviour
         for (int i = 0; i < currNumSteps; i++)
         {
             // Balance actions between two players
-            int player = Random.Range(0, 2);
+            int player = Random.Range(0, chooseRange);
 
             Action randAction;
-            if (player == 0) randAction = (Action)Random.Range(0, 4);
-            else randAction = (Action)Random.Range(4, 6);
+            if (player < balanceAmount)
+            {
+                randAction = (Action)Random.Range(0, 4);
+                balanceAmount--;
+            }
+            else
+            {
+                randAction = (Action)Random.Range(4, 6);
+                balanceAmount++;
+            } 
 
             currentActions.Add(randAction);
             currentGreeting.Add(randAction);
@@ -159,7 +170,7 @@ public class ScreenController : MonoBehaviour
     void GreetingCompleted()
     {
         gameManager.AddToScore();
-        CreateGreeting();
+        if (!gameManager.GameOver()) CreateGreeting();
     }
 
     void SetAnimatorsToFaceScreen(bool value)

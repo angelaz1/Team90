@@ -32,5 +32,6 @@ public class Subject
 [Serializable]
 public class Subjects
 {
-    public Subject[] subjects;
+    public Subject[] animals;
+    public Subject[] humans;
 }

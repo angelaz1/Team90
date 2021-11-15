@@ -80,6 +80,11 @@ public abstract class GameManager : MonoBehaviour
 
     public abstract void UpdateScoreText();
 
+    public bool GameOver()
+    {
+        return currentScore >= maxScore;
+    }
+
     void EndGame()
     {
         winScreen.SetActive(true);
