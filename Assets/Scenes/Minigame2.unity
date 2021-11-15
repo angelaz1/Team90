@@ -2134,8 +2134,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Boxes Delivered: 0 / 5'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d4d288933445de042930c99c2291bffe, type: 2}
+  m_sharedMaterial: {fileID: 7495153252151244669, guid: d4d288933445de042930c99c2291bffe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4659,6 +4659,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6464521120330586912, guid: c61783975793229468705ac5bb5232b9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 25.6589
+      objectReference: {fileID: 0}
+    - target: {fileID: -6464521120330586912, guid: c61783975793229468705ac5bb5232b9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 25.6589
+      objectReference: {fileID: 0}
+    - target: {fileID: -6464521120330586912, guid: c61783975793229468705ac5bb5232b9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 25.6589
+      objectReference: {fileID: 0}
+    - target: {fileID: -6464521120330586912, guid: c61783975793229468705ac5bb5232b9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.5434864
+      objectReference: {fileID: 0}
+    - target: {fileID: -6464521120330586912, guid: c61783975793229468705ac5bb5232b9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.33432052
+      objectReference: {fileID: 0}
+    - target: {fileID: -6464521120330586912, guid: c61783975793229468705ac5bb5232b9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.07617188
+      objectReference: {fileID: 0}
     - target: {fileID: -3983316571073981621, guid: c61783975793229468705ac5bb5232b9, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4701,7 +4725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1948135165489245675, guid: c61783975793229468705ac5bb5232b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 1.1570193e-16
+      value: 1.1570192e-16
       objectReference: {fileID: 0}
     - target: {fileID: 1948135165489245675, guid: c61783975793229468705ac5bb5232b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -4709,7 +4733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1948135165489245675, guid: c61783975793229468705ac5bb5232b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 1.2689796e-15
+      value: 1.2689784e-15
       objectReference: {fileID: 0}
     - target: {fileID: 5353016673525918373, guid: c61783975793229468705ac5bb5232b9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6036,7 +6060,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2128159285
 Transform:
   m_ObjectHideFlags: 0
@@ -8020,8 +8044,8 @@ MonoBehaviour:
     Left
     to pull; Right to push!'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d4d288933445de042930c99c2291bffe, type: 2}
+  m_sharedMaterial: {fileID: 7495153252151244669, guid: d4d288933445de042930c99c2291bffe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8045,8 +8069,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.5
-  m_fontSizeBase: 0.5
+  m_fontSize: 0.4
+  m_fontSizeBase: 0.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8225,8 +8249,8 @@ MonoBehaviour:
 
     Deliver the box to the green square!'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d4d288933445de042930c99c2291bffe, type: 2}
+  m_sharedMaterial: {fileID: 7495153252151244669, guid: d4d288933445de042930c99c2291bffe, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8250,8 +8274,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.5
-  m_fontSizeBase: 0.5
+  m_fontSize: 0.4
+  m_fontSizeBase: 0.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

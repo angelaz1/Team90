@@ -13,6 +13,8 @@ public class M2CameraMovement : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        looksObjects.SetActive(true);
+        gameplayObjects.SetActive(false);
     }
 
     public void MoveCamera()
