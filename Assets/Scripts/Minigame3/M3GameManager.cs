@@ -10,9 +10,11 @@ public class M3GameManager : GameManager
     public TextMeshProUGUI totalText;
 
     public ScreenController screenController;
+    public Animator cameraAnimator;
 
     public override void StopShowingTutorial()
     {
+        cameraAnimator.SetTrigger("MoveCam");
     }
 
     public override void StartOtherGameObjects()
@@ -27,7 +29,7 @@ public class M3GameManager : GameManager
 
     public override void DoOnWin()
     {
-        //papersController.WinGame();
+        screenController.WinGame();
     }
 
     public override void ExitToMain()
