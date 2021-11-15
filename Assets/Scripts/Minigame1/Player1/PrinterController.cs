@@ -168,7 +168,7 @@ public class PrinterController : MonoBehaviour
             {
                 // Pass paper
                 squirrelController.PassPaper();
-                Invoke(nameof(PassPaper), 1.5f);
+                Invoke(nameof(PassPaper), 1.8f);
             }
         }
     }
