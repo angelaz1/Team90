@@ -28,8 +28,8 @@ public class ScreenController : MonoBehaviour
     bool keyDown = false;
     bool acceptingInput = false;
 
-    int chooseRange = 10;
-    int balanceAmount = 5;
+    int chooseRange = 4;
+    int balanceAmount = 2;
 
     M3GameManager gameManager;
 
@@ -142,7 +142,7 @@ public class ScreenController : MonoBehaviour
             if (currentActions.Count != 0)
             { 
                 if (act != Action.F && act != Action.G) squirrelController.Pose(act);
-                else pikachuController.Pose();
+                else pikachuController.Pose(act);
             }
 
             playerActionsController.ShowCorrectAction(act);
@@ -155,7 +155,9 @@ public class ScreenController : MonoBehaviour
             // Incorrect animations + sounds
             squirrelController.IncorrectPoses();
             pikachuController.IncorrectPoses();
-            bossController.MakeBossAngry();
+
+            if (Random.Range(0, 1) == 0) bossController.MakeBossAngry();
+            else bossController.MakeBossSad();
 
             audioSource.clip = incorrectClip;
             audioSource.Play();

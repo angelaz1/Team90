@@ -11,9 +11,17 @@ public class M3PikachuController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void Pose()
+    public void Pose(Action act)
     {
-        anim.SetTrigger("Pose");
+        switch (act)
+        {
+            case Action.F:
+                anim.SetTrigger("PoseLeft");
+                break;
+            case Action.G:
+                anim.SetTrigger("PoseRight");
+                break;
+        }
     }
 
     public void CorrectPoses()
