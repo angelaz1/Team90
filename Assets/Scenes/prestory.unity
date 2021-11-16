@@ -299,7 +299,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ce4e83d61e6ffc147a028618a2570fd6, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -409,7 +409,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bb03cbca5ad356544b9ded72e13bf5f7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1393,7 +1393,7 @@ PrefabInstance:
     - target: {fileID: 4903500812040211593, guid: 33a263ad0f12343438d816a13df56445, type: 3}
       propertyPath: m_VideoClip
       value: 
-      objectReference: {fileID: 32900000, guid: 2e2ef921c25ac6d4d92e55f6baf12b90, type: 3}
+      objectReference: {fileID: 32900000, guid: 8eae5249127b56740add1b7249db7d40, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33a263ad0f12343438d816a13df56445, type: 3}
 --- !u!1001 &1403794772
