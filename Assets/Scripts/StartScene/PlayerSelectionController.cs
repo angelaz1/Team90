@@ -9,12 +9,13 @@ public class PlayerSelectionController : MonoBehaviour
 
     int currentIndex = 0;
     bool ddrDown = false;
-    bool disableControls = false;
+    bool disableControls = true;
 
     private void Start()
     {
         currentIndex = 0;
         if (buttons.Count > 0) buttons[currentIndex].GetComponent<Button>().Select();
+        Invoke(nameof(AllowControls), 1f);
     }
 
     public void SetButtons(List<GameObject> buttons)
@@ -22,6 +23,11 @@ public class PlayerSelectionController : MonoBehaviour
         this.buttons = buttons;
         currentIndex = 0;
         buttons[currentIndex].GetComponent<Button>().Select();
+    }
+
+    void AllowControls()
+    {
+        disableControls = false;
     }
 
     private void Update()

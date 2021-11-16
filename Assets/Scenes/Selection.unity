@@ -1036,7 +1036,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 76eae8c99a9a88847b2470756b751b70, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0928958172d5e3748971f92159ca37a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 0.4
+  waitTime: 0.6
 --- !u!1 &1193290889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,7 +1866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0928958172d5e3748971f92159ca37a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 0.8
+  waitTime: 1
 --- !u!82 &1804459916
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1879,7 +1879,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 76eae8c99a9a88847b2470756b751b70, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2286,7 +2286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2515149804953355539, guid: 6da87711e2c8e514ab9443a209839f7e, type: 3}
       propertyPath: waitTime
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3041015284694263250, guid: 6da87711e2c8e514ab9443a209839f7e, type: 3}
       propertyPath: m_Name
@@ -2627,6 +2627,14 @@ PrefabInstance:
     - target: {fileID: 7776470096871917564, guid: 6da87711e2c8e514ab9443a209839f7e, type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 8240023755509446433, guid: 6da87711e2c8e514ab9443a209839f7e, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8240023755509446433, guid: 6da87711e2c8e514ab9443a209839f7e, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6da87711e2c8e514ab9443a209839f7e, type: 3}

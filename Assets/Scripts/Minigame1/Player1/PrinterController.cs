@@ -154,7 +154,7 @@ public class PrinterController : MonoBehaviour
         if (currentActions.Count == 1 && !printerBroken)
         {
             paperObject.SetActive(false);
-            squirrelController.GrabPaper();
+            squirrelController.GrabPaper(papersController.SetNewSubject());
         }
 
         if (currentActions.Count == 0)
