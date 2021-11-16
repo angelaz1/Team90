@@ -13,7 +13,6 @@ public class ScreenController : MonoBehaviour
     public GameObject player2;
 
     public float inBetweenWaitTime = 0.5f;
-    public float afterWaitTime = 2f;
 
     public GameObject tutorialPanel;
 
@@ -36,6 +35,7 @@ public class ScreenController : MonoBehaviour
     [Header("SFX")]
     public AudioClip correctClip;
     public AudioClip incorrectClip;
+    public AudioClip countdownClip;
     AudioSource audioSource;
 
     void Start()
@@ -54,7 +54,10 @@ public class ScreenController : MonoBehaviour
 
     void FinishedDisplaying()
     {
-        Invoke(nameof(StartListening), afterWaitTime);
+        audioSource.clip = countdownClip;
+        audioSource.Play();
+
+        Invoke(nameof(StartListening), audioSource.clip.length - 0.5f);
     }
 
     void StartListening()
