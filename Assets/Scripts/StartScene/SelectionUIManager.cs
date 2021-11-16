@@ -23,7 +23,7 @@ public class SelectionUIManager : MonoBehaviour
         for (int i = 0; i < minigameButtons.Length; i++)
         {
             minigameButtons[i].interactable = i < numMinigames;
-            if (i < numMinigames)
+            if (i < numMinigames && !selectionManager.GetFinishedMinigames(i))
             {
                 buttons.Add(minigameButtons[i].gameObject);
             }
