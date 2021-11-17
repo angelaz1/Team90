@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WinScreen : MonoBehaviour
 {
+    public Image p1Check;
+    public Image p2Check;
+
+    Color checkDefaultColor = new Color(255, 255, 255, 40);
+
     bool p1keyDown = false;
     bool p2keyDown = false;
 
@@ -23,7 +29,7 @@ public class WinScreen : MonoBehaviour
             p1keyDown = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKey(KeyCode.F) || Input.GetKey(KeyCode.G))
         {
             p2keyDown = true;
         }
@@ -32,7 +38,19 @@ public class WinScreen : MonoBehaviour
             p2keyDown = false;
         }
 
-        if (p1keyDown && p2keyDown) ReturnToSelection();
+        if (p1keyDown && p2keyDown) 
+        {
+            // Play a sound
+            Invoke(nameof(ReturnToSelection), 0.5f);
+        }
+
+        UpdateChecksUI();
+    }
+
+    void UpdateChecksUI()
+    {
+        p1Check.color = p1keyDown ? Color.green : checkDefaultColor;
+        p2Check.color = p2keyDown ? Color.green : checkDefaultColor;
     }
 
     void ReturnToSelection()
