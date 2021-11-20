@@ -48,4 +48,9 @@ public class SelectionManager : MonoBehaviour
     {
         finishedMinigames[index] = true;
     }
+
+    public void ClearMinigames()
+    {
+        finishedMinigames = new bool[numMinigames];
+    }
 }
