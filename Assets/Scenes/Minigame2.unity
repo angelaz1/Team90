@@ -5776,7 +5776,7 @@ MonoBehaviour:
   m_text: 'Move the squirrel around!
 
 
-    Deliver the box to the green square!'
+    Deliver the box to the blue square!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d4d288933445de042930c99c2291bffe, type: 2}
   m_sharedMaterial: {fileID: 7495153252151244669, guid: d4d288933445de042930c99c2291bffe, type: 2}

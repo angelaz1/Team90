@@ -17369,6 +17369,14 @@ PrefabInstance:
       value: -25.367962
       objectReference: {fileID: 0}
     - target: {fileID: 222393939347015829, guid: 8c836d874988f6d45ac112a48011e9d3, type: 3}
+      propertyPath: spawnTimeMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 222393939347015829, guid: 8c836d874988f6d45ac112a48011e9d3, type: 3}
+      propertyPath: spawnTimeMin
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 222393939347015829, guid: 8c836d874988f6d45ac112a48011e9d3, type: 3}
       propertyPath: papersController
       value: 
       objectReference: {fileID: 5388732176097376806}
