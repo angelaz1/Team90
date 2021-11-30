@@ -124,7 +124,7 @@ public class SelectionManager : MonoBehaviour
 
             // Insert new score
             topScores[i] = score;
-            currentMax = topScores[maxGrab - 1].time;
+            currentMax = currentCount < maxGrab ? 999 : topScores[maxGrab - 1].time;
             currentCount = Mathf.Min(currentCount + 1, maxGrab);
         }
 
