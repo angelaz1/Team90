@@ -26,7 +26,6 @@ public class PapersController : MonoBehaviour
     {
         TextAsset subjectsTextAsset = Resources.Load<TextAsset>(subjectsFilePath);
         Subjects subjects = JsonUtility.FromJson<Subjects>(subjectsTextAsset.text);
-        Debug.Log(subjectsTextAsset.text);
         animals = subjects.animals;
         humans = subjects.humans;
     }

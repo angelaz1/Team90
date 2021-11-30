@@ -9,7 +9,7 @@ public abstract class GameManager : MonoBehaviour
     [Header("Game Manager Variables")]
     public GameObject winScreen;
 
-    public int gameTime = 60;
+    public int gameTime = 0;
 
     public GameObject tutorialPanel;
     public GameObject countdownPanel;
@@ -62,6 +62,16 @@ public abstract class GameManager : MonoBehaviour
         countdownPanel.SetActive(false);
 
         StartOtherGameObjects();
+        StartCoroutine(StartTimer());
+    }
+
+    private IEnumerator StartTimer()
+    {
+        while (!GameOver())
+        {
+            yield return new WaitForSeconds(1f);
+            if (!GameOver()) gameTime++;
+        }
     }
 
     public abstract void StopShowingTutorial();
@@ -95,7 +105,12 @@ public abstract class GameManager : MonoBehaviour
         GameObject sManagerObj = GameObject.Find("SelectionManager");
         if (sManagerObj)
         {
-            sManagerObj.GetComponent<SelectionManager>().FinishMinigame(GetGameIndex());
+            SelectionManager selectionManager = sManagerObj.GetComponent<SelectionManager>();
+            selectionManager.FinishMinigame(GetGameIndex());
+            selectionManager.WriteToLeaderboard(GetGameIndex(), gameTime);
+
+            WinScreen wScreen = winScreen.GetComponent<WinScreen>();
+            wScreen.SetLeaderboardText(selectionManager.GetCurrentLeaderboardInfo(5));
         }
 
         DoOnWin();

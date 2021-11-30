@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class WinScreen : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class WinScreen : MonoBehaviour
 
     bool p1keyDown = false;
     bool p2keyDown = false;
+
+    public TextMeshProUGUI teamNamesText;
+    public TextMeshProUGUI teamTimesText;
 
     void Update()
     {
@@ -56,5 +60,16 @@ public class WinScreen : MonoBehaviour
     void ReturnToSelection()
     {
         SceneManager.LoadScene("Selection");
+    }
+
+    public void SetLeaderboardText(LeaderboardInfo info)
+    {
+        teamNamesText.text = ""; teamTimesText.text = "";
+
+        for (int i = 0; i < info.maxGrab; i++)
+        {
+            teamNamesText.text += info.teamNames[i] + "\n";
+            teamTimesText.text += info.teamTimes[i] + "\n";
+        }
     }
 }
