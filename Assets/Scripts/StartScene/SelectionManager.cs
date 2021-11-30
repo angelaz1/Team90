@@ -134,8 +134,8 @@ public class SelectionManager : MonoBehaviour
 
         for (int i = 0; i < currentCount; i++)
         {
-            teamNames[i] = scores[i].teamName;
-            teamTimes[i] = scores[i].time;
+            teamNames[i] = topScores[i].teamName;
+            teamTimes[i] = topScores[i].time;
         }
         for (int i = currentCount; i < maxGrab; i++)
         {
