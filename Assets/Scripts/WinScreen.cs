@@ -69,7 +69,7 @@ public class WinScreen : MonoBehaviour
         for (int i = 0; i < info.maxGrab; i++)
         {
             teamNamesText.text += info.teamNames[i] + "\n";
-            teamTimesText.text += info.teamTimes[i] + "\n";
+            teamTimesText.text += (1000 - info.teamTimes[i]) + "\n";
         }
     }
 }
