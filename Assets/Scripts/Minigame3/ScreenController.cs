@@ -38,6 +38,8 @@ public class ScreenController : MonoBehaviour
     public AudioClip countdownClip;
     AudioSource audioSource;
 
+    bool p2OnCooldown = false;
+
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<M3GameManager>();
@@ -126,9 +128,27 @@ public class ScreenController : MonoBehaviour
             }
             if (Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0) keyDown = false;
 
-            if (Input.GetKeyDown(KeyCode.F)) HandleAction(Action.F);
-            else if (Input.GetKeyDown(KeyCode.G)) HandleAction(Action.G);
+            if (!p2OnCooldown)
+            {
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    HandleAction(Action.F);
+                    p2OnCooldown = true;
+                    Invoke(nameof(StopCooldown), 0.2f);
+                }
+                else if (Input.GetKeyDown(KeyCode.G)) 
+                {
+                    HandleAction(Action.G);
+                    p2OnCooldown = true;
+                    Invoke(nameof(StopCooldown), 0.2f);
+                }
+            }
         }
+    }
+
+    void StopCooldown()
+    {
+        p2OnCooldown = false;
     }
 
     void HandleAction(Action act)
