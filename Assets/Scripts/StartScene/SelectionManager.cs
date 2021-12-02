@@ -14,6 +14,8 @@ public class SelectionManager : MonoBehaviour
     private string teamName = "";
     private Leaderboard currentLeaderboard;
 
+    int totalTime = 0;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -55,6 +57,7 @@ public class SelectionManager : MonoBehaviour
     public void ClearMinigames()
     {
         finishedMinigames = new bool[numMinigames];
+        totalTime = 0;
     }
 
     public void SetTeamName(string newName)
@@ -66,6 +69,8 @@ public class SelectionManager : MonoBehaviour
 
     public void WriteToLeaderboard(int minigameIndex, int time)
     {
+        totalTime += time;
+
         string leaderboardFileName = $"minigame{minigameIndex}.json";
         string path = Application.persistentDataPath + "/" + leaderboardFileName;
         Debug.Log(path);
@@ -134,13 +139,10 @@ public class SelectionManager : MonoBehaviour
 
         for (int i = 0; i < currentCount; i++)
         {
-            teamNames[i] = topScores[i].teamName;
+            if (topScores[i].teamName == teamName) teamNames[i] = $"*{topScores[i].teamName}*";
+            else teamNames[i] = topScores[i].teamName;
+
             teamTimes[i] = topScores[i].time;
-        }
-        for (int i = currentCount; i < maxGrab; i++)
-        {
-            teamNames[i] = "AAA";
-            teamTimes[i] = 999;
         }
 
         currentInfo.teamNames = teamNames;
@@ -148,5 +150,40 @@ public class SelectionManager : MonoBehaviour
         currentInfo.maxGrab = maxGrab;
 
         return currentInfo;
+    }
+
+    public LeaderboardInfo GetFinalScores(int maxGrab)
+    {
+        string leaderboardFileName = $"finalScores.json";
+        string path = Application.persistentDataPath + "/" + leaderboardFileName;
+
+        currentLeaderboard = new Leaderboard();
+        List<Score> newScoresList = new List<Score>();
+
+        if (File.Exists(path))
+        {
+            StreamReader reader = new StreamReader(path);
+            string text = reader.ReadToEnd();
+            reader.Close();
+
+            currentLeaderboard = JsonUtility.FromJson<Leaderboard>(text);
+            newScoresList = new List<Score>(currentLeaderboard.scores);
+        }
+
+        Score newScore = new Score()
+        {
+            teamName = teamName,
+            time = totalTime
+        };
+        newScoresList.Add(newScore);
+
+        currentLeaderboard.scores = newScoresList.ToArray();
+        string json = JsonUtility.ToJson(currentLeaderboard);
+
+        StreamWriter writer = new StreamWriter(path, false);
+        writer.WriteLine(json);
+        writer.Close();
+
+        return GetCurrentLeaderboardInfo(maxGrab);
     }
 }

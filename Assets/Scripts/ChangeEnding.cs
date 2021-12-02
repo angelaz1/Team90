@@ -8,6 +8,12 @@ public class ChangeEnding : MonoBehaviour
 {
     public VideoPlayer VideoPlayer;
     public bool isPlayerStarted = false;
+    public GameObject winScreen;
+
+    private void Start()
+    {
+        winScreen.SetActive(false);
+    }
 
     void Update()
     {
@@ -19,8 +25,9 @@ public class ChangeEnding : MonoBehaviour
         if (isPlayerStarted == true && VideoPlayer.isPlaying == false)
         {
             // Wehen the player stopped playing, hide it
-          //  VideoPlayer.gameObject.SetActive(false);
-            SceneManager.LoadScene("Start");
+            VideoPlayer.gameObject.SetActive(false);
+            winScreen.SetActive(true);
+            //SceneManager.LoadScene("Start");
         }
     }
 }
